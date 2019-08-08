@@ -1,0 +1,41 @@
+import Vue from 'vue'
+import Router from 'vue-router'
+// import Home from './views/Home.vue'
+import hooks from "./config/routes"
+
+Vue.use(Router);
+const router =new Router({
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes: [
+        // {
+        //     path: '/',
+        //     // name: 'home',
+        //     // component: Home,
+        //     // beforeEnter: hooks.ifAuthenticated
+        //     redirect: '/event',
+        // },
+
+        {
+            path: '/login',
+            name: 'login',
+            // route level code-splitting
+            // this generates a separate chunk (about.[hash].js) for this route
+            // which is lazy-loaded when the route is visited.
+            component: () => import(/* webpackChunkName: "login" */ './components/Login.vue'),
+            beforeEnter: hooks.ifNotAuthentificated,
+        },
+
+        {
+            path:'/404',
+            name:'notFound',
+            component: () => import(/* webpackChunkName: "404" */ './components/NotFound.vue'),
+        },
+        {
+            path:'*',
+            redirect: '/404',
+        },
+    ]
+});
+// router.beforeEach(hooks.titleBeforeEach);
+export default router;
