@@ -1,8 +1,8 @@
 <template>
     <v-card class="elevation-12">
-        <v-toolbar dark color="primary">
-            <v-toolbar-title>Ошибка 404</v-toolbar-title>
-        </v-toolbar>
+<!--        <v-toolbar dark color="primary">-->
+<!--            <v-toolbar-title>Ошибка 404</v-toolbar-title>-->
+<!--        </v-toolbar>-->
         <v-card-text>
             Запрашиваемая страница не найдена! Воспользуйтесь навигацией для перемещения в нужный раздел.
         </v-card-text>

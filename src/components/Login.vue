@@ -8,7 +8,7 @@
                 <v-card-text>
                     <v-form>
                         <v-text-field v-validate="'required|email'" prepend-icon="person" name="login" label="Login"
-                                      type="text" v-model="user.username"
+                                      type="text" v-model="user.email"
                                       :error-messages="errors.collect('login')"></v-text-field>
                         <v-text-field v-validate="'required'" prepend-icon="lock" name="password" label="Password"
                                       id="password" type="password" v-model="user.password"
@@ -36,19 +36,19 @@
         data() {
             return {
                 user: {
-                    username: '',
+                    email: '',
                     password: '',
                 },
             }
         },
         methods: {
             submit() {
-                this.$validator.validateAll().then(() => {
-                    this.$store.dispatch(types.AUTH_REQUEST, this.user).then(() => {
-                        this.$router.push('/')
-                    })
-                })
-
+                this.$validator.validate().then(valid => {
+                    if (valid) {
+                        this.$store.dispatch(types.AUTH_REQUEST, this.user).then(() => {
+                            this.$router.push('/')
+                        })
+                    }});
             }
         },
     }

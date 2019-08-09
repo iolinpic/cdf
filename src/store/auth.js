@@ -16,12 +16,14 @@ const actions = {
         commit(types.AUTH_REQUEST);
         let promise = api.auth.login(user);
         promise.then((resp) => {
-            const token = resp.data.access_token;
-            const refreshToken = resp.data.refresh_token;
+            const token = resp.data.token;
+            const user = resp.data.user;
+            // const refreshToken = resp.data.refresh_token;
             localStorage.setItem('user-token', token);
             // localStorage.setItem('refresh-token', refreshToken);
             // aux.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            commit(types.AUTH_SUCCESS, {token, refreshToken});
+            commit(types.AUTH_SUCCESS, {token});
+            commit(types.USER_CURRENT,user);
             resolve(resp);
         })
             .catch((err) => {

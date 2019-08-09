@@ -16,8 +16,8 @@ Vue.use(VeeValidate);
 Validator.localize('ru', ru);
 setupAxios();
 new Vue({
+  vuetify,
   router,
   store,
-  vuetify,
   render: h => h(App)
 }).$mount('#app')

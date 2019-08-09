@@ -3,8 +3,8 @@ let endpoints= {
     user: '/users/me',
     logoutAll: '/users/me/logoutall',
     create: '/users',
-
-
+    all: '/users',
+    remove: '/users/',
 };
 export default {
     user: ()=>{
@@ -12,6 +12,12 @@ export default {
     },
     create:(payload)=>{
         return api.post(endpoints.create,payload);
+    },
+    all:()=>{
+        return api.get(endpoints.all);
+    },
+    remove:(id)=>{
+        return api.delete(endpoints.remove+id);
     },
     logoutAll:()=>{
         return api.post(endpoints.logoutAll);

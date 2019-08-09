@@ -1,7 +1,7 @@
 module.exports = {
     // proxy API requests to Valet during development
     devServer: {
-        // proxy: 'http://192.168.10.10'
+        proxy: 'http://127.0.0.1:3000'
         // proxy:process.env.VUE_APP_PROXY,
         // public:process.env.VUE_APP_PROXY,
         // proxy: 'http://yusdoc.ru'

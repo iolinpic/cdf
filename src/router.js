@@ -8,14 +8,19 @@ const router =new Router({
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [
-        // {
-        //     path: '/',
-        //     // name: 'home',
-        //     // component: Home,
-        //     // beforeEnter: hooks.ifAuthenticated
-        //     redirect: '/event',
-        // },
-
+        {
+            path: '/',
+            // name: 'users',
+            // component: () => import(/* webpackChunkName: "login" */ './views/Users.vue'),
+            beforeEnter: hooks.ifAuthenticated,
+            redirect: '/users',
+        },
+        {
+            path: '/users',
+            name: 'users',
+            component: () => import(/* webpackChunkName: "users" */ './views/Users.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
         {
             path: '/login',
             name: 'login',
