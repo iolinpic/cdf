@@ -94,8 +94,8 @@
         name: 'App',
         metaInfo() {
             return {
-                title: 'Crysmo-dialogs',
-                titleTemplate: '%s | Crysmo-dialogs',
+                title: 'Crysmo',
+                titleTemplate: '%s | Crysmo',
                 changed: (newInfo) => {
                     this.$store.commit(types.UI_TITLE, newInfo.titleChunk);
                 }
@@ -153,7 +153,7 @@
                 return this.$store.getters.isAuthenticated;
             },
             username() {
-                return this.$store.getters.uName;
+                return this.$store.getters.authUser.name;
             },
         },
 

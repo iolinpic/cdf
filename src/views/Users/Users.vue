@@ -13,7 +13,7 @@
             <tr v-for="(item,id) in users" :key="item.email">
                 <td>{{ item.name }}</td>
                 <td>{{ item.email }}</td>
-                <td><v-btn icon><v-icon>edit</v-icon></v-btn><v-btn icon><v-icon @click="removeUser(id)">delete</v-icon></v-btn></td>
+                <td><v-btn icon @click="$router.push({name:'users.edit',params:{id:item._id}})"><v-icon>edit</v-icon></v-btn><v-btn icon><v-icon @click="removeUser(id)">delete</v-icon></v-btn></td>
             </tr>
             </tbody>
         </v-simple-table>
@@ -36,10 +36,10 @@
                 loading:false,
                 buttons:[
                     {
-                        text:'Создать пользователя',
+                        text:'Создать',
                         icon:'add',
                         click:()=>{
-                            this.$refs.createUserComponent.dialog=true;
+                            this.$router.push({name:'users.create'});
                         }
                     },
                 ],

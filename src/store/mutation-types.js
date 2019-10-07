@@ -1,10 +1,10 @@
-export const AUTH_ERROR = 'AUTH_ERROR';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 export const AUTH_REQUEST = 'AUTH_REQUEST';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const AUTH_USER = 'AUTH_USER';
 export const USER_CURRENT = 'USER_CURRENT';
 export const USER_CREATE = 'USER_CREATE';
-export const USER_EDIT = 'USER_EDIT';
+export const USER_UPDATE = 'USER_UPDATE';
 export const USER_DELETE = 'USER_DELETE';
 export const USER_ALL = 'USER_ALL';
 export const UI_ALERT_SHOW = 'UI_ALERT_SHOW';

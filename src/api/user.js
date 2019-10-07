@@ -1,23 +1,23 @@
 import api from '../config/api'
 let endpoints= {
-    user: '/users/me',
     logoutAll: '/users/me/logoutall',
-    create: '/users',
-    all: '/users',
-    remove: '/users/',
+    users:'/users/',
 };
 export default {
-    user: ()=>{
-        return api.get(endpoints.user);
-    },
     create:(payload)=>{
-        return api.post(endpoints.create,payload);
+        return api.post(endpoints.users,payload);
     },
     all:()=>{
-        return api.get(endpoints.all);
+        return api.get(endpoints.users);
+    },
+    user:(id)=>{
+        return api.get(endpoints.users+id);
+    },
+    update:(id,payload)=>{
+        return api.put(endpoints.users+id,payload);
     },
     remove:(id)=>{
-        return api.delete(endpoints.remove+id);
+        return api.delete(endpoints.users+id);
     },
     logoutAll:()=>{
         return api.post(endpoints.logoutAll);

@@ -24,7 +24,6 @@ export const setupAxios = function () {
             } else {
                 msg.message += error.message;
             }
-            //console.log(error.config);
             store.commit(types.UI_ALERT_SHOW, msg);
         });
     });

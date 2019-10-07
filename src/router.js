@@ -18,7 +18,19 @@ const router =new Router({
         {
             path: '/users',
             name: 'users',
-            component: () => import(/* webpackChunkName: "users" */ './views/Users.vue'),
+            component: () => import(/* webpackChunkName: "users" */ './views/Users/Users.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/users/create',
+            name: 'users.create',
+            component: () => import(/* webpackChunkName: "users" */ './views/Users/Create.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/users/:id',
+            name: 'users.edit',
+            component: () => import(/* webpackChunkName: "users" */ './views/Users/Edit.vue'),
             beforeEnter: hooks.ifAuthenticated
         },
         {

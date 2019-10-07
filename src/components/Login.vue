@@ -6,7 +6,7 @@
                     <v-toolbar-title>Форма входа</v-toolbar-title>
                 </v-toolbar>
                 <v-card-text>
-                    <v-form>
+                    <v-form v-model="valid">
                         <v-text-field v-validate="'required|email'" prepend-icon="person" name="login" label="Login"
                                       type="text" v-model="user.email"
                                       :error-messages="errors.collect('login')"></v-text-field>
@@ -30,7 +30,6 @@
     export default {
         name: 'Login',
         metaInfo: {
-            // if no subcomponents specify a metaInfo.title, this title will be used
             title: 'Вход',
         },
         data() {
@@ -39,16 +38,16 @@
                     email: '',
                     password: '',
                 },
+                valid: true,
             }
         },
         methods: {
             submit() {
-                this.$validator.validate().then(valid => {
-                    if (valid) {
-                        this.$store.dispatch(types.AUTH_REQUEST, this.user).then(() => {
-                            this.$router.push('/')
-                        })
-                    }});
+                if (this.valid) {
+                    this.$store.dispatch(types.AUTH_REQUEST, this.user).then(() => {
+                        this.$router.push('/')
+                    })
+                }
             }
         },
     }
