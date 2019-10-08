@@ -58,14 +58,14 @@ const mutations = {
     },
     [types.USER_UPDATE]:(state,user) => {
         let index  = state.allUsers.findIndex((el)=>el._id === user._id);
-        state.allUsers.slice(index,1);
+        state.allUsers.splice(index,1);
         state.allUsers = [...state.allUsers,user];
     },
     [types.USER_ALL]:(state,users)=>{
         state.allUsers = users
     },
     [types.USER_DELETE]:(state,id)=>{
-        state.allUsers.slice(id,1);
+        state.allUsers.splice(id,1);
         state.allUsers = [...state.allUsers];
     },
 };
