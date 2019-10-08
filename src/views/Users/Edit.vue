@@ -1,6 +1,5 @@
 <template>
     <v-card>
-        <v-card-title title>Редактирование данных пользователя</v-card-title>
         <v-card-text>
             <v-form v-model="valid">
                 <v-text-field v-model="user.name" label="Имя"
@@ -39,6 +38,9 @@
 
     export default {
         name: 'UsersEdit',
+        metaInfo: {
+            title: 'Редактирование пользователя',
+        },
         data() {
             return {
                 dialog: false,

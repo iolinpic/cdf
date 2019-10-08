@@ -1,6 +1,5 @@
 <template>
     <v-card>
-        <v-card-title title>Создание нового пользователя</v-card-title>
         <v-card-text>
             <v-form v-model="valid">
                 <v-text-field v-model="user.name" label="Имя"
@@ -38,6 +37,9 @@
 
     export default {
         name: 'UsersCreate',
+        metaInfo: {
+            title: 'Создание нового пользователя',
+        },
         data() {
             return {
                 dialog: false,

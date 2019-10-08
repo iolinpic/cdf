@@ -1,10 +1,9 @@
 const menu = [
-    // {
-    //     path: 'clientCreate',
-    //     title: 'Создать Заказчика',
-    //     icon: 'note_add',
-    //     exact: false,
-    //     permission: 'Создание Заказчиков',
-    // },
+    {
+        path: 'users',
+        title: 'Пользователи',
+        icon: 'account_box',
+        exact: false,
+    },
 ];
 export default menu;

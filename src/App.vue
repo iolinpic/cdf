@@ -156,7 +156,11 @@
                 return this.$store.getters.authUser.name;
             },
         },
-
+        mounted(){
+            if(this.username === 'Not Logged'){
+                this.$store.dispatch(types.AUTH_USER)
+            }
+        },
         methods: {
             logout() {
                 this.$store.dispatch(types.AUTH_LOGOUT).then(() => {
