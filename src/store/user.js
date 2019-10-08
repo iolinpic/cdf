@@ -19,8 +19,8 @@ const actions = {
             reject(err)
         })
     }),
-    [types.USER_UPDATE]:({commit},id,payload)=> new Promise((resolve,reject)=>{
-        let promise = api.user.update(id,payload);
+    [types.USER_UPDATE]:({commit},payload)=> new Promise((resolve,reject)=>{
+        let promise = api.user.update(payload.id,payload.data);
         promise.then((resp)=>{
             const user = resp.data;
             commit(types.USER_UPDATE,user);

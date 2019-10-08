@@ -17,19 +17,14 @@
             </tr>
             </tbody>
         </v-simple-table>
-        <create-user-component ref="createUserComponent"></create-user-component>
     </v-card>
 </template>
 <script>
     import {USER_ALL,UI_TOOLBAR_BTNS,UI_TOOLBAR_BTNS_CLEAR,USER_DELETE} from "@/store/mutation-types";
-    import CreateUserComponent from '@/components/users/create'
     export default {
         name:'UsersPage',
         metaInfo: {
             title: 'Список пользователей',
-        },
-        components:{
-            CreateUserComponent,
         },
         data(){
             return {

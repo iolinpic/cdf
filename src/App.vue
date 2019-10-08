@@ -126,7 +126,7 @@
                 return this.$store.getters.uiTitle;
             },
             menu() {
-                return menu.filter((item) => this.$can(item.permission, 'api'));
+                return menu;
             },
             alert() {
                 return this.$store.getters.uiAlert;

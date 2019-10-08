@@ -51,23 +51,23 @@
                 valid: true,
             }
         },
-        computed:{
-            id(){
+        computed: {
+            id() {
                 return this.$route.params.id;
             },
         },
-        mounted(){
-            api.user.user(this.id).then((res)=>{
+        mounted() {
+            api.user.user(this.id).then((res) => {
                 this.user = res.data;
             })
         },
         methods: {
             back() {
-                this.$router.push({name:'users'});
+                this.$router.push({name: 'users'});
             },
             submit() {
                 if (this.valid) {
-                    this.$store.dispatch(USER_UPDATE,this.id, this.user).then(() => {
+                    this.$store.dispatch(USER_UPDATE, {id: this.id, data: this.user}).then(() => {
                         this.back();
                     })
                 }
