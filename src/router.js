@@ -25,7 +25,7 @@ const router =new Router({
             path: '/users/create',
             name: 'users.create',
             component: () => import(/* webpackChunkName: "users" */ './views/Users/Create.vue'),
-            // beforeEnter: hooks.ifAuthenticated
+            beforeEnter: hooks.ifAuthenticated
         },
         {
             path: '/users/:id',
