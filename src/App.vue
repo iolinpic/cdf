@@ -38,7 +38,7 @@
                 </v-list-item>
             </v-list>
         </v-navigation-drawer>
-        <v-app-bar ref="mainToolbar" :tabs="toolbarShow" v-if="auth"
+        <v-app-bar ref="mainToolbar" v-if="auth"
                    app
                    clipped-right
                    color="blue-grey"
@@ -51,21 +51,6 @@
                     <v-icon dark v-if="btn.icon!==''">{{btn.icon}}</v-icon>
                     {{btn.text}}
                 </v-btn>
-            </template>
-            <template v-slot:extension v-if="toolbarShow">
-                <v-tabs
-                        v-model="toolbarTab"
-                        show-arrows
-                        grow
-                >
-                    <v-tabs-slider></v-tabs-slider>
-                    <v-tab
-                            v-for="item in toolbarItems"
-                            :key="item.name"
-                    >
-                        {{ item.name }}
-                    </v-tab>
-                </v-tabs>
             </template>
         </v-app-bar>
         <v-content>
@@ -102,20 +87,6 @@
             }
         },
         computed: {
-            toolbarItems() {
-                return this.$store.getters.toolbarItems;
-            },
-            toolbarTab: {
-                get() {
-                    return this.$store.getters.toolbarIndex;
-                },
-                set(v) {
-                    this.$store.commit(types.UI_TOOLBAR_TAB, v);
-                }
-            },
-            toolbarShow() {
-                return this.$store.getters.toolbarShow;
-            },
             showBtns() {
                 return this.$store.getters.toolbarBtnsShow;
             },
@@ -155,11 +126,6 @@
             username() {
                 return this.$store.getters.authUser.name;
             },
-        },
-        mounted(){
-            if(this.username === 'Not Logged'){
-                this.$store.dispatch(types.AUTH_USER)
-            }
         },
         methods: {
             logout() {

@@ -1,5 +1,5 @@
 import store from '@/store'
-import {USER_CURRENT} from "@/store/mutation-types";
+import {AUTH_USER} from "@/store/mutation-types";
 
 const ifNotAuthentificated = (to,from,next) =>{
     if(!store.getters.isAuthenticated){
@@ -10,8 +10,8 @@ const ifNotAuthentificated = (to,from,next) =>{
 };
 const ifAuthenticated = (to, from, next) => {
     if (store.getters.isAuthenticated) {
-        if(store.getters.uId === 0){
-            store.dispatch(USER_CURRENT);
+        if(store.getters.authUser._id === 0){
+            store.dispatch(AUTH_USER);
         }
         next();
         return
