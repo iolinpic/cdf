@@ -1,6 +1,6 @@
 import axios from 'axios'
 const remoteApp = axios.create({
-    // baseURL:host,
+    baseURL:'/api',
     headers:{
         'X-Requested-With':'XMLHttpRequest',
         'Access-Control-Allow-Origin': '*',

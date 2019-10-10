@@ -10,8 +10,6 @@ const router =new Router({
     routes: [
         {
             path: '/',
-            // name: 'users',
-            // component: () => import(/* webpackChunkName: "login" */ './views/Users.vue'),
             beforeEnter: hooks.ifAuthenticated,
             redirect: '/users',
         },
