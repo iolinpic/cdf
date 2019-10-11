@@ -32,6 +32,24 @@ const router =new Router({
             beforeEnter: hooks.ifAuthenticated
         },
         {
+            path: '/conditions',
+            name: 'conditions',
+            component: () => import(/* webpackChunkName: "users" */ './views/Conditions/Index.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/conditions/create',
+            name: 'conditions.create',
+            component: () => import(/* webpackChunkName: "users" */ './views/Conditions/Create.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/conditions/:id',
+            name: 'conditions.edit',
+            component: () => import(/* webpackChunkName: "users" */ './views/Conditions/Edit.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
             path: '/login',
             name: 'login',
             // route level code-splitting
