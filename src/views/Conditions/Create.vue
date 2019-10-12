@@ -9,7 +9,7 @@
                               :error-messages="errors.collect('name')"
                 ></v-text-field>
                 <v-textarea name="description" v-validate="'required'" label="Описание"
-                            :error-messages="errors.collect('description')">{{condition.DescriptionText}}
+                            :error-messages="errors.collect('description')" v-model="condition.DescriptionText">
                 </v-textarea>
                 <v-select multiple :items="crysmTypes" v-model="immunity" label="Имунные к состоянию"></v-select>
                 <v-select v-model="type" :items="conditionTypes" label="Тип состояния" item-text="name"
