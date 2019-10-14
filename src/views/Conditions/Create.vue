@@ -11,7 +11,7 @@
                 <v-textarea name="description" v-validate="'required'" label="Описание"
                             :error-messages="errors.collect('description')" v-model="condition.DescriptionText">
                 </v-textarea>
-                <v-select multiple :items="crysmTypes" v-model="immunity" label="Имунные к состоянию"></v-select>
+                <crysm-type-component label="Имунные к состоянию" v-model="condition.Immunity"></crysm-type-component>
                 <v-select v-model="type" :items="conditionTypes" label="Тип состояния" item-text="name"
                           :item-value="Object"
                 ></v-select>
@@ -28,16 +28,7 @@
                                                v-model="condition.ConditionOptions[key]"></options-component>
                         </template>
                         <template v-else>
-                            <v-layout wrap class="mb-3">
-                                <v-flex sm6><h3>Сопротивления</h3></v-flex>
-                                <v-flex sm6>
-                                    <v-btn color="blue" @click="addResistanceValue">Добавить сопротивление</v-btn>
-                                </v-flex>
-                            </v-layout>
-                            <v-divider class="mb-3"></v-divider>
-                            <resistance-component :value="res" v-for="(res,index) in condition.ConditionOptions[key]"
-                                                  :key="key+'_'+index"
-                                                  @del="removeResistanceValue(index)"></resistance-component>
+                            <resistances-component :resistances="condition.ConditionOptions[key]"></resistances-component>
                         </template>
                     </v-flex>
                 </template>
@@ -51,8 +42,9 @@
 </template>
 <script>
     import api from "@/api"
-    import {conditionTypes, crysmTypes, conditionNamesTranslate} from '@/config/gameArrays'
-    import resistanceComponent from '@/components/ResistanceComponent'
+    import {conditionTypes, conditionNamesTranslate} from '@/config/gameArrays'
+    import resistancesComponent from '@/components/ResistancesComponent'
+    import crysmTypeComponent from '@/components/CrysmTypeComponent'
     import optionsComponent from '@/components/OptionComponent'
 
     export default {
@@ -61,8 +53,9 @@
             title: 'Создание нового состояния',
         },
         components: {
-            resistanceComponent,
+            resistancesComponent,
             optionsComponent,
+            crysmTypeComponent,
         },
         data() {
             return {
@@ -76,16 +69,12 @@
                 },
                 type: conditionTypes[0],
                 subtype: conditionTypes[0].subtype[0],
-                immunity: [],
                 valid: true,
             }
         },
         computed: {
             conditionTypes() {
                 return conditionTypes;
-            },
-            crysmTypes() {
-                return crysmTypes;
             },
             conditionNames() {
                 return conditionNamesTranslate;
@@ -100,11 +89,6 @@
             subtype(val) {
                 this.condition.SubType = this.type.subtype.findIndex((el) => el === val);
             },
-            immunity(val) {
-                this.condition.Immunity = val.map((el) => {
-                    return this.crysmTypes.findIndex((cr) => cr === el)
-                })
-            }
         },
         methods: {
             back() {
@@ -112,15 +96,6 @@
             },
             getIdFromString(str) {
                 return this.conditionTypes.findIndex((el) => el.name === str)
-            },
-            addResistanceValue() {
-                this.condition.ConditionOptions['Resistances'].push({
-                    "Type": 0,
-                    "Value": 0.5
-                });
-            },
-            removeResistanceValue(index) {
-                this.condition.ConditionOptions['Resistances'].splice(index, 1);
             },
             submit() {
                 if (this.valid) {

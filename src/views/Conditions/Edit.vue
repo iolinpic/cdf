@@ -11,7 +11,7 @@
                 <v-textarea name="description" v-validate="'required'" label="Описание"
                             :error-messages="errors.collect('description')" v-model="condition.DescriptionText">
                 </v-textarea>
-                <v-select multiple :items="crysmTypes" v-model="immunity" label="Имунные к состоянию"></v-select>
+                <crysm-type-component label="Имунные к состоянию" v-model="condition.Immunity"></crysm-type-component>
                 <v-text-field :value="type.name" label="Тип состояния" readonly
                               disabled></v-text-field>
                 <v-flex sm12 mb-3>{{type.description}}</v-flex>
@@ -21,25 +21,13 @@
                     <h3>Детальные настройки</h3>
                     <v-divider class="mb-3"></v-divider>
                     <v-flex sm12 v-for="key in Object.keys(condition.ConditionOptions)" :key="key">
-
                         <template v-if="key !== 'Resistances'">
                             <options-component :label="conditionNames[key]"
                                                v-model="condition.ConditionOptions[key]"></options-component>
                         </template>
                         <template v-else>
-                            <v-layout wrap class="mb-3">
-                                <v-flex sm6><h4>Сопротивления</h4></v-flex>
-                                <v-flex sm6>
-                                    <v-btn color="blue" @click="addResistanceValue">Добавить сопротивление</v-btn>
-                                </v-flex>
-                                <v-divider class="mb-3"></v-divider>
-                            </v-layout>
-                            <resistance-component :value="res" v-for="(res,index) in condition.ConditionOptions[key]"
-                                                  :key="key+'_'+index"
-                                                  @del="removeResistanceValue(index)"></resistance-component>
+                            <resistances-component :resistances="condition.ConditionOptions[key]"></resistances-component>
                         </template>
-
-
                     </v-flex>
                 </template>
             </v-form>
@@ -52,8 +40,9 @@
 </template>
 <script>
     import api from "@/api"
-    import {conditionTypes, crysmTypes, conditionNamesTranslate} from '@/config/gameArrays'
-    import resistanceComponent from '@/components/ResistanceComponent'
+    import {conditionTypes, conditionNamesTranslate} from '@/config/gameArrays'
+    import resistancesComponent from '@/components/ResistancesComponent'
+    import crysmTypeComponent from '@/components/CrysmTypeComponent'
     import optionsComponent from '@/components/OptionComponent'
 
     export default {
@@ -62,7 +51,8 @@
             title: 'Редактирование состояния',
         },
         components: {
-            resistanceComponent,
+            resistancesComponent,
+            crysmTypeComponent,
             optionsComponent,
         },
         data() {
@@ -87,9 +77,6 @@
             conditionTypes() {
                 return conditionTypes;
             },
-            crysmTypes() {
-                return crysmTypes;
-            },
             conditionNames() {
                 return conditionNamesTranslate;
             },
@@ -98,11 +85,6 @@
             subtype(val) {
                 this.condition.SubType = this.type.subtype.findIndex((el) => el === val);
             },
-            immunity(val) {
-                this.condition.Immunity = val.map((el) => {
-                    return this.crysmTypes.findIndex((cr) => cr === el)
-                })
-            }
         },
         mounted() {
             this.getCondition();
@@ -112,11 +94,6 @@
                 api.conditions.one(this.$route.params.id).then((res) => {
                     this.condition = res.data;
                     this.subtype = this.type.subtype[this.condition.SubType];
-                    const tmp = [];
-                    this.condition.Immunity.forEach((el) => {
-                        tmp.push(this.crysmTypes[el]);
-                    });
-                    this.immunity = tmp;
                 })
             },
             back() {
@@ -124,15 +101,6 @@
             },
             getIdFromString(str) {
                 return this.conditionTypes.findIndex((el) => el.name === str)
-            },
-            addResistanceValue() {
-                this.condition.ConditionOptions['Resistances'].push({
-                    "Type": 0,
-                    "Value": 0.5
-                });
-            },
-            removeResistanceValue(index) {
-                this.condition.ConditionOptions['Resistances'].splice(index, 1);
             },
             submit() {
                 if (this.valid) {
