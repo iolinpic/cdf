@@ -1,8 +1,8 @@
 import api from '../config/api'
 
 let endpoints = {
-    prefix: '/conditions/',
-    generate: '/conditions/generate/'
+    prefix: '/abilities/',
+    generate: '/abilities/generate/'
 };
 export default {
     all: () => {

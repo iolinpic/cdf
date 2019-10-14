@@ -42,7 +42,7 @@
 </template>
 <script>
     import api from "@/api"
-    import {conditionTypes, conditionNamesTranslate} from '@/config/gameArrays'
+    import {conditionTypes, conditionNamesTranslate} from '@/config/conditions'
     import resistancesComponent from '@/components/ResistancesComponent'
     import crysmTypeComponent from '@/components/CrysmTypeComponent'
     import optionsComponent from '@/components/OptionComponent'

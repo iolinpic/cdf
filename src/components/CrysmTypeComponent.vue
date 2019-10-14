@@ -2,7 +2,7 @@
     <v-select multiple :items="crysmTypes" :value="crysmType" @input="updValue" :label="label"></v-select>
 </template>
 <script>
-    import {crysmTypes} from '@/config/gameArrays'
+    import {crysmTypes} from '@/config/crysms'
     export default {
         name:'CrysmTypeComponent',
         data(){

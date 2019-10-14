@@ -11,5 +11,11 @@ const menu = [
         icon: 'money_off',
         exact: false,
     },
+    {
+        path: 'abilities',
+        title: 'Способности',
+        icon: 'album',
+        exact: false,
+    },
 ];
 export default menu;

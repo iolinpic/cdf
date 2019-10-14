@@ -6,16 +6,14 @@
             <tr>
                 <th class="text-left">Название</th>
                 <th class="text-left">Описание</th>
-                <th class="text-left">Тип</th>
                 <th class="text-left">Действия</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(item,id) in conditions" :key="item.id">
+            <tr v-for="(item,id) in abilities" :key="item.id">
                 <td>{{ item.DisplayNameText }}</td>
                 <td>{{ item.DescriptionText }}</td>
-                <td>{{ getTypeString(item.Type,item.SubType) }}</td>
-                <td><v-btn icon @click="$router.push({name:'conditions.edit',params:{id:item.id}})"><v-icon>edit</v-icon></v-btn><v-btn icon><v-icon @click="deleteCondition(id)">delete</v-icon></v-btn></td>
+                <td><v-btn icon @click="$router.push({name:'abilities.edit',params:{id:item.id}})"><v-icon>edit</v-icon></v-btn><v-btn icon><v-icon @click="deleteOne(id)">delete</v-icon></v-btn></td>
             </tr>
             </tbody>
         </v-simple-table>
@@ -24,31 +22,30 @@
 <script>
     import {UI_TOOLBAR_BTNS,UI_TOOLBAR_BTNS_CLEAR} from "@/store/mutation-types";
     import api from '@/api';
-    import {conditionTypes} from '@/config/conditions'
     import fileDownload from 'js-file-download'
     export default {
-        name:'ConditionsPage',
+        name:'AbilitiesPage',
         metaInfo: {
-            title: 'Список состояний',
+            title: 'Список способностей',
         },
         data(){
             return {
                 loading:true,
-                conditions:[],
+                abilities:[],
                 buttons:[
                     {
                         text:'Создать',
                         icon:'add',
                         click:()=>{
-                            this.$router.push({name:'conditions.create'});
+                            this.$router.push({name:'abilities.create'});
                         }
                     },
                     {
                         text:'Сгенерировать',
                         icon:'add',
                         click:()=>{
-                            api.conditions.generate().then((res)=>{
-                                fileDownload(res.data,'conditions.zip');
+                            api.abilities.generate().then((res)=>{
+                                fileDownload(res.data,'abilities.zip');
                             });
                         }
                     },
@@ -56,30 +53,24 @@
             }
         },
         computed:{
-            types(){
-                return conditionTypes;
-            },
         },
         mounted(){
-            this.getAllConditions();
+            this.getAll();
             this.$store.commit(UI_TOOLBAR_BTNS,this.buttons);
         },
         beforeDestroy(){
             this.$store.commit(UI_TOOLBAR_BTNS_CLEAR);
         },
         methods:{
-            getAllConditions(){
+            getAll(){
                 api.conditions.all().then((res)=>{
                     this.conditions = res.data;
                     this.loading = false
                 });
             },
-            getTypeString(type, subtype){
-                return `${this.types[type].name} : ${this.types[type].subtype[subtype]}`
-            },
-            deleteCondition(id){
-                api.conditions.delete(this.conditions[id].id).then(()=>{
-                    this.conditions.splice(id,1);
+            deleteOne(id){
+                api.abilities.delete(this.abilities[id].id).then(()=>{
+                    this.abilities.splice(id,1);
                 });
             }
         },

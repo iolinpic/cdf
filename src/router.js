@@ -50,6 +50,24 @@ const router =new Router({
             beforeEnter: hooks.ifAuthenticated
         },
         {
+            path: '/abilities',
+            name: 'abilities',
+            component: () => import(/* webpackChunkName: "users" */ './views/Abilities/index.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/abilities/create',
+            name: 'abilities.create',
+            component: () => import(/* webpackChunkName: "users" */ './views/Abilities/create.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/abilities/:id',
+            name: 'abilities.edit',
+            component: () => import(/* webpackChunkName: "users" */ './views/Abilities/edit.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
             path: '/login',
             name: 'login',
             // route level code-splitting

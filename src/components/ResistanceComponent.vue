@@ -12,7 +12,7 @@
     </v-layout>
 </template>
 <script>
-    import {crysmTypes} from "@/config/gameArrays";
+    import {crysmTypes} from "@/config/crysms";
 
     export default {
         name: 'ResistanceComponent',
