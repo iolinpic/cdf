@@ -10,8 +10,6 @@
             <v-btn icon @click="delLine"><v-icon>delete</v-icon></v-btn>
         </v-flex>
     </v-layout>
-
-
 </template>
 <script>
     import {crysmTypes} from "@/config/gameArrays";

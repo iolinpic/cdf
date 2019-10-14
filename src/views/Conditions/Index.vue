@@ -25,6 +25,7 @@
     import {UI_TOOLBAR_BTNS,UI_TOOLBAR_BTNS_CLEAR} from "@/store/mutation-types";
     import api from '@/api';
     import {conditionTypes} from '@/config/gameArrays'
+    import fileDownload from 'js-file-download'
     export default {
         name:'ConditionsPage',
         metaInfo: {
@@ -40,6 +41,15 @@
                         icon:'add',
                         click:()=>{
                             this.$router.push({name:'conditions.create'});
+                        }
+                    },
+                    {
+                        text:'Сгенерировать',
+                        icon:'add',
+                        click:()=>{
+                            api.conditions.generate().then((res)=>{
+                                fileDownload(res.data,'conditions.zip');
+                            });
                         }
                     },
                 ],

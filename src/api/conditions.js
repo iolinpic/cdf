@@ -2,6 +2,7 @@ import api from '../config/api'
 
 let endpoints = {
     conditions: '/conditions/',
+    generate: '/conditions/generate/'
 };
 export default {
     all: () => {
@@ -18,6 +19,9 @@ export default {
     },
     delete: (id) => {
         return api.delete(endpoints.conditions+id)
+    },
+    generate: () => {
+        return api.get(endpoints.generate,{responseType: 'arraybuffer'})
     },
 
 }

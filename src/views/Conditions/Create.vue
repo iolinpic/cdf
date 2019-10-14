@@ -15,23 +15,31 @@
                 <v-select v-model="type" :items="conditionTypes" label="Тип состояния" item-text="name"
                           :item-value="Object"
                 ></v-select>
+                <v-flex sm12 mb-3>{{type.description}}</v-flex>
                 <v-select v-model="subtype" :items="type.subtype" label="Подтип состояния"
                           :readonly="type.subtype.length<=1"></v-select>
                 <template v-if="Object.keys(condition.ConditionOptions).length>=1">
-                <h3>Детальные настройки</h3>
-                <v-divider></v-divider>
-                <v-flex sm12 v-for="key in Object.keys(condition.ConditionOptions)" :key="key">
+                    <h3>Детальные настройки</h3>
+                    <v-divider class="mb-3"></v-divider>
+                    <v-flex sm12 v-for="key in Object.keys(condition.ConditionOptions)" :key="key">
 
-                    <template v-if="key !== 'Resistances'">
-                        <options-component :label="key" v-model="condition.ConditionOptions[key]"></options-component>
-                    </template>
-                    <v-layout wrap v-else>
-                        <v-flex sm6><h4>Сопротивления</h4></v-flex>
-                        <v-flex sm6><v-btn color="blue" @click="addResistanceValue">Добавить сопротивление</v-btn></v-flex>
-                        <resistance-component :value="res" v-for="(res,index) in condition.ConditionOptions[key]"
-                                              :key="key+'_'+index" @del="removeResistanceValue(index)"></resistance-component>
-                    </v-layout>
-                </v-flex>
+                        <template v-if="key !== 'Resistances'">
+                            <options-component :label="conditionNames[key]"
+                                               v-model="condition.ConditionOptions[key]"></options-component>
+                        </template>
+                        <template v-else>
+                            <v-layout wrap class="mb-3">
+                                <v-flex sm6><h3>Сопротивления</h3></v-flex>
+                                <v-flex sm6>
+                                    <v-btn color="blue" @click="addResistanceValue">Добавить сопротивление</v-btn>
+                                </v-flex>
+                            </v-layout>
+                            <v-divider class="mb-3"></v-divider>
+                            <resistance-component :value="res" v-for="(res,index) in condition.ConditionOptions[key]"
+                                                  :key="key+'_'+index"
+                                                  @del="removeResistanceValue(index)"></resistance-component>
+                        </template>
+                    </v-flex>
                 </template>
             </v-form>
         </v-card-text>
@@ -43,7 +51,7 @@
 </template>
 <script>
     import api from "@/api"
-    import {conditionTypes, crysmTypes} from '@/config/gameArrays'
+    import {conditionTypes, crysmTypes, conditionNamesTranslate} from '@/config/gameArrays'
     import resistanceComponent from '@/components/ResistanceComponent'
     import optionsComponent from '@/components/OptionComponent'
 
@@ -79,6 +87,9 @@
             crysmTypes() {
                 return crysmTypes;
             },
+            conditionNames() {
+                return conditionNamesTranslate;
+            },
         },
         watch: {
             type(val) {
@@ -108,8 +119,8 @@
                     "Value": 0.5
                 });
             },
-            removeResistanceValue(index){
-                this.condition.ConditionOptions['Resistances'].splice(index,1);
+            removeResistanceValue(index) {
+                this.condition.ConditionOptions['Resistances'].splice(index, 1);
             },
             submit() {
                 if (this.valid) {
