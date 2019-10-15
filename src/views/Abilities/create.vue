@@ -4,7 +4,7 @@
             <v-form v-model="valid">
                 <template v-if="keys.length>=1">
                     <v-flex sm12 v-for="key in keys" :key="key">
-                        <div :is="settings[key].component" :items="settings[key].items?settings[key].items:''" :label="titles[key]" v-model="ability[key]"></div>
+                        <div :is="settings[key].component" :items="settings[key].items?settings[key].items:''" :label="settings[key].label" v-model="ability[key]"></div>
                     </v-flex>
                 </template>
             </v-form>
@@ -17,10 +17,9 @@
 </template>
 <script>
     import api from "@/api"
-    import {AValues, ATitles, AFieldSettings} from "@/config/abilities";
+    import {AValues, AFieldSettings} from "@/config/abilities";
     import {VTextField, VTextarea, VSelect} from 'vuetify/lib'
-    // import {conditionTypes, conditionNamesTranslate} from '@/config/conditions'
-    // import resistancesComponent from '@/components/ResistancesComponent'
+    import abilityConditionsComponent from "@/components/AbilityConditionsComponent";
     import crysmTypeComponent from '@/components/CrysmTypeComponent'
     import optionsComponent from '@/components/OptionComponent'
 
@@ -36,6 +35,7 @@
             // resistancesComponent,
             optionsComponent,
             crysmTypeComponent,
+            abilityConditionsComponent,
         },
         data() {
             return {
@@ -47,9 +47,9 @@
             keys() {
                 return Object.keys(this.ability);
             },
-            titles() {
-                return ATitles;
-            },
+            // titles() {
+            //     return ATitles;
+            // },
             settings(){
                 return AFieldSettings;
             },
