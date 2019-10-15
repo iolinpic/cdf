@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <h3>{{label}}</h3>
-        <v-btn @click="addNewCondition">Добавить новый статус</v-btn>
+    <div class="mb-3">
+        <h3 class="mb-3">{{label}}</h3>
+        <v-btn @click="addNewCondition" class="mb-3">Добавить новый статус</v-btn>
         <ability-condition-component :obj="val" :conditions="conditions"  v-for="(val,id) in value" :key="`${label}_${id}`" @del="removeCondition(id)"></ability-condition-component>
     </div>
 </template>

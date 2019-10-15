@@ -63,8 +63,8 @@
         },
         methods:{
             getAll(){
-                api.conditions.all().then((res)=>{
-                    this.conditions = res.data;
+                api.abilities.all().then((res)=>{
+                    this.abilities = res.data;
                     this.loading = false
                 });
             },

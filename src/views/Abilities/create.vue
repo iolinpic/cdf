@@ -32,7 +32,6 @@
             VTextField,
             VTextarea,
             VSelect,
-            // resistancesComponent,
             optionsComponent,
             crysmTypeComponent,
             abilityConditionsComponent,
@@ -47,9 +46,6 @@
             keys() {
                 return Object.keys(this.ability);
             },
-            // titles() {
-            //     return ATitles;
-            // },
             settings(){
                 return AFieldSettings;
             },
