@@ -17,5 +17,11 @@ const menu = [
         icon: 'album',
         exact: false,
     },
+    {
+        path: 'pack',
+        title: 'Комплекты способностей',
+        icon: 'album',
+        exact: false,
+    },
 ];
 export default menu;
