@@ -21,12 +21,15 @@
                     <h3>Детальные настройки</h3>
                     <v-divider class="mb-3"></v-divider>
                     <v-flex sm12 v-for="key in Object.keys(condition.ConditionOptions)" :key="key">
-                        <template v-if="key !== 'Resistances'">
+                        <template v-if="key !== 'ConditionsTypes'">
                             <options-component :label="conditionNames[key]"
                                                v-model="condition.ConditionOptions[key]"></options-component>
                         </template>
+<!--                        <template v-else>-->
+<!--                            <resistances-component :resistances="condition.ConditionOptions[key]"></resistances-component>-->
+<!--                        </template>-->
                         <template v-else>
-                            <resistances-component :resistances="condition.ConditionOptions[key]"></resistances-component>
+                            <conditions-type-component :value="condition.ConditionOptions[key]"></conditions-type-component>
                         </template>
                     </v-flex>
                 </template>
@@ -41,7 +44,8 @@
 <script>
     import api from "@/api"
     import {conditionTypes, conditionNamesTranslate} from '@/config/conditions'
-    import resistancesComponent from '@/components/ResistancesComponent'
+    // import resistancesComponent from '@/components/ResistancesComponent'
+    import conditionsTypeComponent from '@/components/condType/array'
     import crysmTypeComponent from '@/components/CrysmTypeComponent'
     import optionsComponent from '@/components/OptionComponent'
 
@@ -51,8 +55,9 @@
             title: 'Редактирование состояния',
         },
         components: {
-            resistancesComponent,
+            // resistancesComponent,
             crysmTypeComponent,
+            conditionsTypeComponent,
             optionsComponent,
         },
         data() {

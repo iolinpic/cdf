@@ -5,7 +5,8 @@
                       :item-value="Object" label="Тип состояния"></v-select>
         </v-flex>
         <v-flex sm5>
-            <v-select :items="subtypes" v-model="subtype"  label="Подтип состояния"></v-select>
+            <v-select :items="subtypes" v-model="subtype" label="Подтип состояния"
+                      :readonly="type.subtype.length<=1"></v-select>
         </v-flex>
         <v-flex sm1>
             <v-btn icon @click="delLine">
@@ -15,32 +16,36 @@
     </v-layout>
 </template>
 <script>
-    // import {conditionT} from "@/config/crysms";
     import {conditionTypes} from "@/config/conditions";
 
     export default {
-        name: 'ResistanceComponent',
+        name: 'singleConditionComponent',
         data() {
             return {
                 // crysm: crysmTypes[this.value.Type]
-                type: {Subtype: 0},
-                subtype: {},
-                subtypes:['-'],
+                type: conditionTypes[this.value.Type],
+                subtype: conditionTypes[this.value.Type].subtype[this.value.Subtype],
+                subtypes: conditionTypes[this.value.Type].subtype,
             }
         },
         computed: {
             conditionTypes() {
-                return conditionTypes.splice(19, 1);
+                const tmp = conditionTypes.slice(0);
+                tmp.splice(19, 1);
+                return tmp;
             }
         },
         watch: {
-            value(val) {
-                this.type = this.conditionTypes[val.Type];
-                this.subtype = val.Subtype;
+            value() {
+                this.type = this.conditionTypes[this.value.Type];
+                this.subtypes = this.type.subtypes;
+                this.subtype = this.type.subtype[this.value.Subtype];
+                this.$forceUpdate();
             },
-            type(val){
+            type(val) {
                 this.value.Type = this.getIdFromString(val.name);
-                this.subtypes = val.subtypes
+                this.subtypes = val.subtype;
+                this.subtype = val.subtype[0];
             },
             subtype(val) {
                 this.value.Subtype = this.type.subtype.findIndex((el) => el === val);
@@ -57,6 +62,5 @@
                 return this.conditionTypes.findIndex((el) => el.name === str)
             },
         },
-
     }
 </script>

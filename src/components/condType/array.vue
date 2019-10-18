@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>Сопротивления</h3>
+        <h3>Типы состояний для снятия</h3>
         <v-divider class="mb-3"></v-divider>
         <v-btn color="blue" @click="addResistanceValue">Добавить тип</v-btn>
         <single :value="item" v-for="(item,index) in value"
@@ -11,7 +11,7 @@
 <script>
     import single from './single'
     export default {
-        name: 'ResistancesComponent',
+        name: 'ArrayConditionComponent',
         props: {
             value: Array,
         },
