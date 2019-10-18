@@ -13,6 +13,7 @@ export const conditionTypes = [
             "PowerModificator": 1.0,
             "Count": -1,
             "ModificatorPerCount": 1.0,
+            "AlternateBonus": 8,
             // "Resistances": [
             //     {
             //         "Type": 8,
