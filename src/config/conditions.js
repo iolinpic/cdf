@@ -364,4 +364,5 @@ export const conditionNamesTranslate = {
     "AttackBonus": "Увеличения атаки в альтернативном варианте",
     "Power": "Урон без множителей",
     "Value": "Значение",
+    "AlternateBonus":"Бонус",
 };
