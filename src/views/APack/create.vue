@@ -26,7 +26,7 @@
     export default {
         name: 'AbilityPackCreate',
         metaInfo: {
-            title: 'Создание новой способности',
+            title: 'Создание нового пула способностей',
         },
         components: {
             VTextField,
