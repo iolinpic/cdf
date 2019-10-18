@@ -63,7 +63,7 @@
                     DisplayNameText: '',
                     DescriptionText: '',
                     Type: 0,
-                    SubType: 0,
+                    Subtype: 0,
                     Immunity: [],
                     ConditionOptions: conditionTypes[0].ConditionOptions,
                 },
@@ -87,7 +87,7 @@
                 this.condition.ConditionOptions = val.ConditionOptions;
             },
             subtype(val) {
-                this.condition.SubType = this.type.subtype.findIndex((el) => el === val);
+                this.condition.Subtype = this.type.subtype.findIndex((el) => el === val);
             },
         },
         methods: {

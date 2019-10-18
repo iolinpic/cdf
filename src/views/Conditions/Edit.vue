@@ -61,7 +61,7 @@
                     DisplayNameText: '',
                     DescriptionText: '',
                     Type: 0,
-                    SubType: 0,
+                    Subtype: 0,
                     Immunity: [],
                     ConditionOptions: conditionTypes[0].ConditionOptions,
                 },
@@ -83,7 +83,7 @@
         },
         watch: {
             subtype(val) {
-                this.condition.SubType = this.type.subtype.findIndex((el) => el === val);
+                this.condition.Subtype = this.type.subtype.findIndex((el) => el === val);
             },
         },
         mounted() {
@@ -93,7 +93,7 @@
             getCondition() {
                 api.conditions.one(this.$route.params.id).then((res) => {
                     this.condition = res.data;
-                    this.subtype = this.type.subtype[this.condition.SubType];
+                    this.subtype = this.type.subtype[this.condition.Subtype];
                 })
             },
             back() {
