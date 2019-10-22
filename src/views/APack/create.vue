@@ -4,7 +4,7 @@
             <v-form v-model="valid">
                 <template v-if="keys.length>=1">
                     <v-flex sm12 v-for="key in keys" :key="key">
-                        <div :is="settings[key].component" :items="settings[key].items?settings[key].items:''" :label="settings[key].label" v-model="ability[key]"></div>
+                        <div :is="settings[key].component" :items="settings[key].items?settings[key].items:''" :label="settings[key].label" v-model="pack[key]"></div>
                     </v-flex>
                 </template>
             </v-form>
@@ -17,11 +17,10 @@
 </template>
 <script>
     import api from "@/api"
-    import {AValues, AFieldSettings} from "@/config/abilities";
+    import {APFieldSettings,APValues} from "@/config/abilityPack";
+    import AbilitiesComponent from "@/components/AbilitiesComponent";
+    import BonusesComponent from "@/components/BonusesComponent";
     import {VTextField, VTextarea, VSelect} from 'vuetify/lib'
-    import abilityConditionsComponent from "@/components/AbilityConditionsComponent";
-    import crysmTypeComponent from '@/components/CrysmTypeComponent'
-    import optionsComponent from '@/components/OptionComponent'
 
     export default {
         name: 'AbilityPackCreate',
@@ -32,32 +31,31 @@
             VTextField,
             VTextarea,
             VSelect,
-            optionsComponent,
-            crysmTypeComponent,
-            abilityConditionsComponent,
+            AbilitiesComponent,
+            BonusesComponent,
         },
         data() {
             return {
-                ability: AValues,
+                pack: APValues,
                 valid: true,
             }
         },
         computed: {
             keys() {
-                return Object.keys(this.ability);
+                return Object.keys(this.pack);
             },
             settings(){
-                return AFieldSettings;
+                return APFieldSettings;
             },
         },
         watch: {},
         methods: {
             back() {
-                this.$router.push({name: 'abilities'});
+                this.$router.push({name: 'pack'});
             },
             submit() {
                 if (this.valid) {
-                    api.abilities.store(this.ability).then(() => {
+                    api.aPack.store(this.pack).then(() => {
                         this.back();
                     })
                 }

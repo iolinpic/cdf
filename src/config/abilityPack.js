@@ -1,4 +1,5 @@
-export const abilityPackDefault = {//id 1
+export const APValues = {
+    "Name": '',
     "Abilities": [
         {
             "Name": "",//название файла конфигурации для способности.
@@ -21,7 +22,7 @@ export const abilityPackDefault = {//id 1
             "Chance": 0.8
         }
     ],
-        "Bonuses": [
+    "Bonuses": [
         {
             "Value": 10,//Бонус для HP
             "Chance": 0.2	//шанс выпадения в паке
@@ -44,10 +45,24 @@ export const abilityPackDefault = {//id 1
         }
     ]
 };
-export const bonusTitles = [
+export const APBonusTitles = [
     "HP",
     "ATK",
     "DEF",
     "Evasion",
     "Reflection"
 ];
+export const APFieldSettings = {
+    "Name": {
+        component: "VTextField",
+        label:"Название",
+    },
+    "Abilities": {
+        component: "AbilitiesComponent",
+        label:"Способности",
+    },
+    "Bonuses": {
+        component: "BonusesComponent",
+        label:"Бонусы",
+    },
+};

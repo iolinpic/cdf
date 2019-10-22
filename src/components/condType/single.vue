@@ -22,7 +22,6 @@
         name: 'singleConditionComponent',
         data() {
             return {
-                // crysm: crysmTypes[this.value.Type]
                 type: conditionTypes[this.value.Type],
                 subtype: conditionTypes[this.value.Type].subtype[this.value.Subtype],
                 subtypes: conditionTypes[this.value.Type].subtype,

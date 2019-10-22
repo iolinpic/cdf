@@ -67,7 +67,7 @@
                 });
             },
             deleteOne(id){
-                api.aPack.delete(this.abilities[id].id).then(()=>{
+                api.aPack.delete(this.packs[id].id).then(()=>{
                     this.packs.splice(id,1);
                 });
             }
