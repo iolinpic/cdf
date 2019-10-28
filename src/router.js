@@ -34,55 +34,73 @@ const router =new Router({
         {
             path: '/conditions',
             name: 'conditions',
-            component: () => import(/* webpackChunkName: "users" */ './views/Conditions/Index.vue'),
+            component: () => import(/* webpackChunkName: "condition" */ './views/Conditions/Index.vue'),
             beforeEnter: hooks.ifAuthenticated
         },
         {
             path: '/conditions/create',
             name: 'conditions.create',
-            component: () => import(/* webpackChunkName: "users" */ './views/Conditions/Create.vue'),
+            component: () => import(/* webpackChunkName: "conditionCreate" */ './views/Conditions/Create.vue'),
             beforeEnter: hooks.ifAuthenticated
         },
         {
             path: '/conditions/:id',
             name: 'conditions.edit',
-            component: () => import(/* webpackChunkName: "users" */ './views/Conditions/Edit.vue'),
+            component: () => import(/* webpackChunkName: "conditionEdit" */ './views/Conditions/Edit.vue'),
             beforeEnter: hooks.ifAuthenticated
         },
         {
             path: '/abilities',
             name: 'abilities',
-            component: () => import(/* webpackChunkName: "users" */ './views/Abilities/index.vue'),
+            component: () => import(/* webpackChunkName: "ability" */ './views/Abilities/index.vue'),
             beforeEnter: hooks.ifAuthenticated
         },
         {
             path: '/abilities/create',
             name: 'abilities.create',
-            component: () => import(/* webpackChunkName: "users" */ './views/Abilities/create.vue'),
+            component: () => import(/* webpackChunkName: "abilityCreate" */ './views/Abilities/create.vue'),
             beforeEnter: hooks.ifAuthenticated
         },
         {
             path: '/abilities/:id',
             name: 'abilities.edit',
-            component: () => import(/* webpackChunkName: "users" */ './views/Abilities/edit.vue'),
+            component: () => import(/* webpackChunkName: "abilityEdit" */ './views/Abilities/edit.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/crysm',
+            name: 'crysm',
+            component: () => import(/* webpackChunkName: "crysm" */ './views/Crysm/index.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/crysm/create',
+            name: 'crysm.create',
+            component: () => import(/* webpackChunkName: "crysmCreate" */ './views/Crysm/create.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/crysm/:id',
+            name: 'crysm.edit',
+            component: () => import(/* webpackChunkName: "crysmEdit" */ './views/Crysm/edit.vue'),
             beforeEnter: hooks.ifAuthenticated
         },
         {
             path: '/pack',
             name: 'pack',
-            component: () => import(/* webpackChunkName: "users" */ './views/APack/index.vue'),
+            component: () => import(/* webpackChunkName: "pack" */ './views/APack/index.vue'),
             beforeEnter: hooks.ifAuthenticated
         },
         {
             path: '/pack/create',
             name: 'pack.create',
-            component: () => import(/* webpackChunkName: "users" */ './views/APack/create.vue'),
+            component: () => import(/* webpackChunkName: "packCreate" */ './views/APack/create.vue'),
             beforeEnter: hooks.ifAuthenticated
         },
         {
             path: '/pack/:id',
             name: 'pack.edit',
-            component: () => import(/* webpackChunkName: "users" */ './views/APack/edit.vue'),
+            component: () => import(/* webpackChunkName: "packEdit" */ './views/APack/edit.vue'),
             beforeEnter: hooks.ifAuthenticated
         },
         {

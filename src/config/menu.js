@@ -20,7 +20,13 @@ const menu = [
     {
         path: 'pack',
         title: 'Комплекты способностей',
-        icon: 'album',
+        icon: 'art_track',
+        exact: false,
+    },
+    {
+        path: 'crysm',
+        title: 'Кризмы',
+        icon: 'hearing',
         exact: false,
     },
 ];
