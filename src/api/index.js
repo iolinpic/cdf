@@ -3,6 +3,7 @@ import user from './user'
 import conditions from  './conditions'
 import abilities from  './abilities'
 import aPack from  './abilityPack'
+import crysms from "./crysms";
 
 export default {
     conditions,
@@ -10,4 +11,5 @@ export default {
     user,
     abilities,
     aPack,
+    crysms
 }
