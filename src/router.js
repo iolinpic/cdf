@@ -79,6 +79,12 @@ const router =new Router({
             component: () => import(/* webpackChunkName: "crysmCreate" */ './views/Crysm/create.vue'),
             beforeEnter: hooks.ifAuthenticated
         },
+        // {
+        //     path: '/crysm/evolve/:id',
+        //     name: 'crysm.evolve',
+        //     component: () => import(/* webpackChunkName: "crysmCreate" */ './views/Crysm/create.vue'),
+        //     beforeEnter: hooks.ifAuthenticated
+        // },
         {
             path: '/crysm/:id',
             name: 'crysm.edit',
