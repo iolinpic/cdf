@@ -160,7 +160,7 @@
             },
             deleteParentLink(id, nextId) {
                 const updElem = this.crysms.findIndex((el) => el.id === id);
-                const delElem = this.crysms[updElem].EvolutionConditions.findIndex((evolution) => evolution.NextConfig === nextId)
+                const delElem = this.crysms[updElem].EvolutionConditions.findIndex((evolution) => evolution.NextConfig === nextId);
                 this.crysms[updElem].EvolutionConditions.splice(delElem, 1);
                 const updServer = Object.assign({}, this.crysms[updElem]);
                 delete updServer.id;
