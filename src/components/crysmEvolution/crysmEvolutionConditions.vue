@@ -19,6 +19,9 @@
                 return CEvolutionConditions;
             },
         },
+        mounted(){
+            this.crysmEvolutionType = this.value;
+        },
         watch: {
             value(val){
                 this.crysmEvolutionType = [];

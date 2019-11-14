@@ -23,7 +23,7 @@
             </v-card-text>
             <v-card-actions>
                 <v-btn color="green" @click="submit">Сохранить</v-btn>
-                <v-btn color="red" @click="back">Отмена</v-btn>
+                <v-btn color="red" @click="cancel">Отмена</v-btn>
             </v-card-actions>
         </v-card>
 
@@ -33,15 +33,17 @@
     import crysmEvolutionConditions from "@/components/crysmEvolution/crysmEvolutionConditions";
     import {VSelect} from 'vuetify/lib'
     import {CEvolution, CEvolutionMaps, CEvolutionItems} from "@/config/crysms"
-    // import api from "@/api"
+    import api from "@/api"
+
     export default {
         name: 'EvolutionCreateDialog',
         data() {
             return {
                 valid: true,
-                crysmEvolution: CEvolution,
+                crysmEvolution: Object.assign({},CEvolution),
                 showMap: false,
                 showItem: false,
+                updObj: {},
                 // fields: {
                 //     EvolutionLevel: -1,
                 //     EvolutionConditions: [],
@@ -65,17 +67,34 @@
         },
         props: {
             dialog: Boolean,
+            current: String,
+            crysm: Object,
         },
         mounted() {
             this.checkFields();
+            this.updCrysm();
         },
         watch: {
             'crysmEvolution.SelectedConditions'() {
                 this.checkFields();
-            }
+            },
+            current() {
+                this.updCrysm();
+            },
+            crysm() {
+                this.updCrysm();
+            },
         },
         methods: {
+            updCrysm(){
+                this.updObj = Object.assign({}, this.crysm);
+                delete this.updObj.id;
+                this.crysmEvolution.NextConfig = this.current;
+            },
             back() {
+                this.showItem = false;
+                this.showMap = false;
+                this.crysmEvolution = Object.assign({}, CEvolution);
                 this.$emit('close');
             },
             checkFields() {
@@ -85,8 +104,17 @@
             showField(name) {
                 return this.crysmEvolution.SelectedConditions.findIndex((el) => el === name) > -1
             },
+            cancel() {
+                api.crysms.delete(this.current).then(() => {
+                    this.back();
+                });
+            },
             submit() {
                 if (this.valid) {
+                    this.updObj.EvolutionConditions.push(this.crysmEvolution);
+                    api.crysms.update(this.crysm.id, this.updObj).then(() => {
+                        this.back();
+                    })
                     // api.crysms.store(this.crysm).then(() => {
                     //     this.back();
                     // })
