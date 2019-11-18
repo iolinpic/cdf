@@ -153,7 +153,9 @@
             },
             deleteOne(id) {
                 const updElem = this.crysms.findIndex((el) => el.id === this.groupEvolutions[id].id);
-                this.deleteParentLink(this.crysms[updElem].PreviousConfig, this.crysms[updElem].id);
+                if(this.crysms[updElem].PreviousConfig!==''){
+                    this.deleteParentLink(this.crysms[updElem].PreviousConfig, this.crysms[updElem].id);
+                }
                 api.crysms.delete(this.crysms[updElem].id).then(() => {
                     this.crysms.splice(updElem, 1);
                 });

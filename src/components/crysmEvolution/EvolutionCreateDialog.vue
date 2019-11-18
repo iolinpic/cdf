@@ -13,7 +13,7 @@
                         <!--                                     :label="settings[key].label" v-model="crysmEvolution[key]"></div>-->
                     </v-flex>
                     <v-flex sm12 v-if="showMap">
-                        <v-select :items="maps" v-model="crysmEvolution.Map" label="Карта"></v-select>
+                        <v-autocomplete :items="maps" v-model="crysmEvolution.Map" label="Карты" multiple></v-autocomplete>
                     </v-flex>
                     <v-flex sm12 v-if="showItem">
                         <v-select :items="items" v-model="crysmEvolution.Item" label="Предмет"></v-select>

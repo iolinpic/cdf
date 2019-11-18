@@ -36,11 +36,11 @@ export const CValues = {
     "EvolutionConditions": [],
 };
 export const CEvolutionConditions = ["Map", "Item"];
-export const CEvolutionMaps = ["SomeMap", "SomeMap2"];
+export const CEvolutionMaps = ["Zone_Village", "Zone_RockyCoast","Zone_Forest","Zone_Cave"];
 export const CEvolutionItems = ["SomeItem", "SomeItem2"];
 export const CEvolution = {
     "SelectedConditions": ["Map", "Item"],
-    "Map": "SomeMap",
+    "Map": ["Zone_Village"],
     "Item": "SomeItem",
     "NextConfig": ""
 };
