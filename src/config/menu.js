@@ -29,5 +29,11 @@ const menu = [
         icon: 'hearing',
         exact: false,
     },
+    {
+        path: 'item',
+        title: 'Предметы',
+        icon: 'card_travel',
+        exact: false,
+    },
 ];
 export default menu;
