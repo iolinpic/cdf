@@ -1,10 +1,10 @@
 export const ATypes = ['AT_Damage', 'AT_Heal', 'AT_Defence'];
-export const ADirections = ['AD_Solo', 'AD_Line', 'AD_All'];
+export const ADirections = ['D_Solo', 'D_Line', 'D_All'];
 export const AValues = {
     "DisplayNameText": '',
     "DescriptionText": '',
     "AbilitType": 'AT_Damage',
-    "AbilityDirection": 'AD_Solo',
+    "AbilityDirection": 'D_Solo',
     "AbilityValue": 55.0,
     "HitChance": 1.0,
     "CritChance": 0.0,
