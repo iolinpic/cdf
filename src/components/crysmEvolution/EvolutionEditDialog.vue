@@ -12,7 +12,7 @@
                         <v-autocomplete :items="maps" v-model="crysmEvolution.Map" label="Карты" multiple></v-autocomplete>
                     </v-flex>
                     <v-flex sm12 v-if="showItem">
-                        <v-select :items="items" v-model="crysmEvolution.Item" label="Предмет"></v-select>
+                        <evolution-items v-model="crysmEvolution.Item" label="Предмет"></evolution-items>
                     </v-flex>
                 </v-form>
             </v-card-text>
@@ -26,6 +26,7 @@
 </template>
 <script>
     import crysmEvolutionConditions from "@/components/crysmEvolution/crysmEvolutionConditions";
+    import evolutionItems from "@/components/crysmEvolution/evolutionItems";
     import {CEvolution, CEvolutionMaps, CEvolutionItems} from "@/config/crysms"
     import api from "@/api"
 
@@ -50,6 +51,7 @@
         },
         components: {
             crysmEvolutionConditions,
+            evolutionItems,
         },
         props: {
             dialog: Boolean,

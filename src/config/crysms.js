@@ -10,6 +10,10 @@ export const crysmTypes = [
     'Темный',
     'Паранормальный',
 ];
+export const CItems={
+    Type:"Consum",
+    Subtype:"Evolution"
+};
 export const CValues = {
     "PreviousConfig": "",
     "DisplayNameText": "",
