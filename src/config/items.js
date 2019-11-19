@@ -9,9 +9,7 @@ export const ITypes = [
                 ItemOption: {
                     "Direction": "D_Solo", //from ability
                     "CooldownTime": 0.001,
-                    "StatusEffects": [
-                        "ConRegeneration_Consum" //айдишники тип 11
-                    ]
+                    "StatusEffects": [],
                 },
             },
             {
@@ -19,9 +17,7 @@ export const ITypes = [
                 ItemOption: {
                     "Direction": "D_Solo",
                     "CooldownTime": 0.001,
-                    "StatusEffects": [
-                        "ConRegeneration_Consum"// тип 0
-                    ]
+                    "StatusEffects": [],
                 },
             },
             {
@@ -78,61 +74,65 @@ export const ITypes = [
     },
 ];
 export const ITypesSettings = {
-    "Direction":{
+    "Direction": {
         component: "VSelect",
-        label:"Цели применения: одна, линия, все",
+        label: "Цели применения: одна, линия, все",
         items: ADirections,
     },
-    "CooldownTime":{
+    "CooldownTime": {
         component: "optionsComponent",
-        label:"Кулдаун",
+        label: "Кулдаун",
     },
-    "StatusEffects":{//статусы тип 11/0
-        component:'VSelect',
-        label:"Статусы"
+    "StatusEffects": {//статусы тип 11/0
+        component: 'conditionsArray',
+        label: "Статусы"
     },
-    "CrystalType":{
+    "CrystalType": {
         component: "optionsComponent",
-        label:"Качество кристалла",
+        label: "Качество кристалла",
     },
     "HPModificator": {
         component: "optionsComponent",
-        label:"HPModificator",
+        label: "HPModificator",
     },
-    "HPModificatorPercent":{
+    "HPModificatorPercent": {
         component: "optionsComponent",
-        label:"HPModificatorPercent",
+        label: "HPModificatorPercent",
     },
     "AttackModificator": {
         component: "optionsComponent",
-        label:"AttackModificator",
+        label: "AttackModificator",
     },
     "DefenceModificator": {
         component: "optionsComponent",
-        label:"DefenceModificator",
+        label: "DefenceModificator",
     },
     "EvasionModificator": {
         component: "optionsComponent",
-        label:"EvasionModificator",
+        label: "EvasionModificator",
     },
     "ReflectionModificator": {
         component: "optionsComponent",
-        label:"ReflectionModificator",
+        label: "ReflectionModificator",
     },
     "HitChanceModifValue": {
         component: "optionsComponent",
-        label:"HitChanceModifValue",
+        label: "HitChanceModifValue",
     },
     "CritChanceModifValue": {
         component: "optionsComponent",
-        label:"CritChanceModifValue",
+        label: "CritChanceModifValue",
     },
     "DelayModifValue": {
         component: "optionsComponent",
-        label:"DelayModifValue",
+        label: "DelayModifValue",
     },
     "ActDelayModifValue": {
         component: "optionsComponent",
-        label:"ActDelayModifValue",
+        label: "ActDelayModifValue",
+    },
+    "ResistanceModificatorsMap": {
+        component: "resistancesComponent",
+        label: "Модификаторы сопротивления",
     },
 };

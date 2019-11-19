@@ -14,7 +14,7 @@
             <tr v-for="(item,id) in items" :key="item.id">
                 <td>{{ item.DisplayNameText }}</td>
                 <td>{{ item.DescriptionText }}</td>
-                <td>{{ item.Type+' '+item.Subtype }}</td>
+                <td>{{ item.Type+' - '+item.Subtype }}</td>
                 <td><v-btn icon @click="$router.push({name:'item.edit',params:{id:item.id}})"><v-icon>edit</v-icon></v-btn><v-btn icon><v-icon @click="deleteOne(id)">delete</v-icon></v-btn></td>
             </tr>
             </tbody>

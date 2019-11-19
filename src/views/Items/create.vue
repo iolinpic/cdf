@@ -18,21 +18,14 @@
                           item-value="name"
                           :readonly="subtypes.length<=1"></v-select>
 
-                <!--                <template v-if="itemKeys.length>=1">-->
-                <!--                    <h3>Детальные настройки</h3>-->
-                <!--                    <v-divider class="mb-3"></v-divider>-->
-                <!--                    <v-flex sm12 v-for="key in itemKeys" :key="key">-->
-                <!--                        <template :is="settings[key].component" :items="settings[key].items?settings[key].items:''"-->
-                <!--                        :label="settings[key].label" v-model="item.ItemOption[key]"></template>-->
-                <!--&lt;!&ndash;                        <template v-if="key !== 'ConditionsTypes'">&ndash;&gt;-->
-                <!--&lt;!&ndash;                            <options-component :label="itemNames[key]"&ndash;&gt;-->
-                <!--&lt;!&ndash;                                               v-model="item.ConditionOptions[key]"></options-component>&ndash;&gt;-->
-                <!--&lt;!&ndash;                        </template>&ndash;&gt;-->
-                <!--&lt;!&ndash;                        <template v-else>&ndash;&gt;-->
-                <!--&lt;!&ndash;                            <items-type-component :value="item.ConditionOptions[key]"></items-type-component>&ndash;&gt;-->
-                <!--&lt;!&ndash;                        </template>&ndash;&gt;-->
-                <!--                    </v-flex>-->
-                <!--                </template>-->
+                <template v-if="itemKeys.length>=1">
+                    <h3>Детальные настройки</h3>
+                    <v-divider class="mb-3"></v-divider>
+                    <v-flex sm12 v-for="key in itemKeys" :key="key">
+                        <div :is="settings[key].component" :items="settings[key].items?settings[key].items:''"
+                                  :label="settings[key].label" v-model="item.ItemOption[key]" :type="item.Subtype"></div>
+                    </v-flex>
+                </template>
             </v-form>
         </v-card-text>
         <v-card-actions>
@@ -44,9 +37,10 @@
 <script>
     import api from "@/api"
     import {ITypes, ITypesSettings} from '@/config/items'
-    // import resistancesComponent from '@/components/ResistancesComponent'
+    import resistancesComponent from '@/components/ResistancesComponent'
+    import conditionsArray from "@/components/conditions/array";
     // import itemsTypeComponent from '@/components/condType/array'
-    // import optionsComponent from '@/components/OptionComponent'
+    import optionsComponent from '@/components/OptionComponent'
 
     export default {
         name: 'ItemCreate',
@@ -54,9 +48,10 @@
             title: 'Создание нового предмета',
         },
         components: {
-            // resistancesComponent,
+            resistancesComponent,
             // itemsTypeComponent,
-            // optionsComponent,
+            optionsComponent,
+            conditionsArray,
         },
         data() {
             return {
@@ -93,7 +88,7 @@
             },
             'item.Subtype'(val) {
                 const elemId = this.types.findIndex((el) => el.name === this.item.Type);
-                const subId = this.types[elemId].subtypes.findIndex((el)=> el.name === val);
+                const subId = this.types[elemId].subtypes.findIndex((el) => el.name === val);
                 this.item.ItemOption = this.types[elemId].subtypes[subId].ItemOption;
             },
         },
