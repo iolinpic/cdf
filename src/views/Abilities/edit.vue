@@ -45,7 +45,8 @@
         },
         computed: {
             keys() {
-                return Object.keys(this.ability);
+                // return Object.keys(this.ability);
+                return Object.keys(AFieldSettings);
             },
             settings() {
                 return AFieldSettings;
