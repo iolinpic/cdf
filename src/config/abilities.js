@@ -12,6 +12,7 @@ export const AValues = {
     "CritChance": 0.0,
     "AbilityDelay": 2.0,
     "ActCount": 1,
+    "ActDelay": 1,
     "RestTime": 2.0,
     "DamageTypes": [],
     "ConditionTarget": [],
@@ -60,6 +61,10 @@ export const AFieldSettings = {
     "ActCount": {
         component: "optionsComponent",
         label: "Количество действий для одной аблики (например, одна атака нанесет урон не 1 раз, а 4).",
+    },
+    "ActDelay": {
+        component: "optionsComponent",
+        label: "Задержка между тиками",
     },
     "RestTime": {
         component: "optionsComponent",
