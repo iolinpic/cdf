@@ -20,11 +20,12 @@
         },
         computed: {
             filteredItems() {
-                let baseType = 0;
-                if(this.type === "Heal"){
-                    baseType = 11;
-                }
-                return this.condItems.filter((el)=>el.Type === baseType);
+                // let baseType = 0;
+                // if(this.type === "Heal"){
+                //     baseType = 11;
+                // }
+                // return this.condItems.filter((el)=>el.Type === baseType);
+                return this.condItems;
             },
         },
         mounted() {

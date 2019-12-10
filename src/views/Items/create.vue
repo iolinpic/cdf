@@ -23,7 +23,7 @@
                     <v-divider class="mb-3"></v-divider>
                     <v-flex sm12 v-for="key in itemKeys" :key="key">
                         <div :is="settings[key].component" :items="settings[key].items?settings[key].items:''"
-                                  :label="settings[key].label" v-model="item.ItemOption[key]" :type="item.Subtype"></div>
+                             :label="settings[key].label" v-model="item.ItemOption[key]" :type="item.Subtype"></div>
                     </v-flex>
                 </template>
             </v-form>
