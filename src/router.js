@@ -68,6 +68,42 @@ const router =new Router({
             beforeEnter: hooks.ifAuthenticated
         },
         {
+            path: '/actors',
+            name: 'actors',
+            component: () => import(/* webpackChunkName: "actor" */ './views/Actor/index.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/actors/create',
+            name: 'actors.create',
+            component: () => import(/* webpackChunkName: "actorCreate" */ './views/Actor/create.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/actors/:id',
+            name: 'actors.edit',
+            component: () => import(/* webpackChunkName: "actorEdit" */ './views/Actor/edit.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/zones',
+            name: 'zones',
+            component: () => import(/* webpackChunkName: "zone" */ './views/Zone/index.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/zones/create',
+            name: 'zones.create',
+            component: () => import(/* webpackChunkName: "zoneCreate" */ './views/Zone/create.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/zones/:id',
+            name: 'zones.edit',
+            component: () => import(/* webpackChunkName: "zoneEdit" */ './views/Zone/edit.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
             path: '/crysm',
             name: 'crysm',
             component: () => import(/* webpackChunkName: "crysm" */ './views/Crysm/index.vue'),

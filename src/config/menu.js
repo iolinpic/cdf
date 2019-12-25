@@ -18,6 +18,18 @@ const menu = [
         exact: false,
     },
     {
+        path: 'actors',
+        title: 'NPC',
+        icon: 'album',
+        exact: false,
+    },
+    {
+        path: 'zones',
+        title: 'Карты',
+        icon: 'album',
+        exact: false,
+    },
+    {
         path: 'pack',
         title: 'Комплекты способностей',
         icon: 'art_track',

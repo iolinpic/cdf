@@ -5,8 +5,8 @@ import abilities from  './abilities'
 import aPack from  './abilityPack'
 import crysms from "./crysms";
 import items from "./items";
-import zone from "./zone";
-import actor from "./actor";
+import zones from "./zone";
+import actors from "./actor";
 
 export default {
     conditions,
@@ -16,6 +16,6 @@ export default {
     aPack,
     crysms,
     items,
-    zone,
-    actor
+    zones,
+    actors,
 }
