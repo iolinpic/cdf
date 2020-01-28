@@ -13,7 +13,8 @@
                         <!--                                     :label="settings[key].label" v-model="crysmEvolution[key]"></div>-->
                     </v-flex>
                     <v-flex sm12 v-if="showMap">
-                        <v-autocomplete :items="maps" v-model="crysmEvolution.Map" label="Карты" multiple></v-autocomplete>
+<!--                        <v-autocomplete :items="maps" v-model="crysmEvolution.Map" label="Карты" multiple></v-autocomplete>-->
+                        <zone-select-multiple :obj="crysmEvolution"></zone-select-multiple>
                     </v-flex>
                     <v-flex sm12 v-if="showItem">
                         <evolution-items v-model="crysmEvolution.Item" label="Предмет"></evolution-items>
@@ -33,8 +34,9 @@
 <script>
     import crysmEvolutionConditions from "@/components/crysmEvolution/crysmEvolutionConditions";
     import evolutionItems from "@/components/crysmEvolution/evolutionItems";
+    import zoneSelectMultiple from "@/components/zone/selectMultiple";
     // import {VSelect} from 'vuetify/lib'
-    import {CEvolution, CEvolutionMaps, CEvolutionItems} from "@/config/crysms"
+    import {CEvolution, CEvolutionItems} from "@/config/crysms"
     import api from "@/api"
 
     export default {
@@ -56,9 +58,9 @@
             // keys() {
             //     return Object.keys(this.crysmEvolution).filter((key) => this.settings.hasOwnProperty(key));
             // },
-            maps() {
-                return CEvolutionMaps;
-            },
+            // maps() {
+            //     return CEvolutionMaps;
+            // },
             items() {
                 return CEvolutionItems;
             },
@@ -66,6 +68,7 @@
         components: {
             crysmEvolutionConditions,
             evolutionItems,
+            zoneSelectMultiple,
         },
         props: {
             dialog: Boolean,

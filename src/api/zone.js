@@ -20,8 +20,8 @@ export default {
     delete: (id) => {
         return api.delete(endpoints.prefix+id)
     },
-    generate: () => {
-        return api.get(endpoints.generate,{responseType: 'arraybuffer'})
-    },
+    // generate: () => {
+    //     return api.get(endpoints.generate,{responseType: 'arraybuffer'})
+    // },
 
 }
