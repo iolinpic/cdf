@@ -102,6 +102,23 @@ const router =new Router({
             name: 'zones.edit',
             component: () => import(/* webpackChunkName: "zoneEdit" */ './views/Zone/edit.vue'),
             beforeEnter: hooks.ifAuthenticated
+        },{
+            path: '/quests',
+            name: 'quests',
+            component: () => import(/* webpackChunkName: "quest" */ './views/Quest/index.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/quests/create',
+            name: 'quests.create',
+            component: () => import(/* webpackChunkName: "questCreate" */ './views/Quest/create.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/quests/:id',
+            name: 'quests.edit',
+            component: () => import(/* webpackChunkName: "questEdit" */ './views/Quest/edit.vue'),
+            beforeEnter: hooks.ifAuthenticated
         },
         {
             path: '/crysm',

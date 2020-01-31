@@ -30,6 +30,12 @@ const menu = [
         exact: false,
     },
     {
+        path: 'quests',
+        title: 'Квесты',
+        icon: 'album',
+        exact: false,
+    },
+    {
         path: 'pack',
         title: 'Комплекты способностей',
         icon: 'art_track',
