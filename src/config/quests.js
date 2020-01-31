@@ -22,5 +22,13 @@ export const QFieldSettings = {
     },
 };
 export const QSValues = {
-
+    "StageDescriptionText": "",
+    // "StageDescription": "",
+    "Goals": [],
+};
+export const QSFieldSettings = {
+    "StageDescriptionText": {
+        component: "VTextarea",
+        label: "Описание",
+    },
 };

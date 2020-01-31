@@ -10,8 +10,8 @@
             </v-form>
         </v-card-text>
         <v-card-actions>
-            <v-btn color="green" @click="submit">Сохранить</v-btn>
-            <v-btn color="red" @click="back">Отмена</v-btn>
+            <v-btn color="green" @click="submit">Продолжить создание</v-btn>
+            <v-btn color="red" @click="backToIndex">Отмена</v-btn>
         </v-card-actions>
     </v-card>
 </template>
@@ -53,13 +53,18 @@
         },
         watch: {},
         methods: {
-            back() {
+            backToIndex(){
                 this.$router.push({name: 'quests'});
+            },
+            back(id) {
+                this.$router.push({name: 'quests.edit',params:{id:id}});
             },
             submit() {
                 if (this.valid) {
-                    api.quests.store(this.quest).then(() => {
-                        this.back();
+                    api.quests.store(this.quest).then((res) => {
+                        // eslint-disable-next-line no-console
+                        // console.log(res.data.id);
+                        this.back(res.data.id);
                     })
                 }
             }

@@ -1,5 +1,5 @@
 <template>
-    <v-card>
+    <v-card flat>
         <v-card-text>
             <v-progress-linear indeterminate v-if="loading"></v-progress-linear>
             <v-form v-model="valid" v-else>
@@ -9,7 +9,9 @@
                              :label="settings[key].label" v-model="quest[key]"></div>
                     </v-flex>
                 </template>
+                <stage-component v-model="quest.Stage" :qid="$route.params.id"></stage-component>
             </v-form>
+
         </v-card-text>
         <v-card-actions>
             <v-btn color="green" @click="submit">Сохранить</v-btn>
@@ -21,6 +23,7 @@
     import api from "@/api"
     import {QValues, QFieldSettings} from "@/config/quests";
     import {VTextField, VTextarea, VSelect} from 'vuetify/lib'
+    import StageComponent from '@/components/stages/index'
     // import abilityConditionsComponent from "@/components/AbilityConditionsComponent";
     // import crysmTypeComponent from '@/components/CrysmTypeComponent'
     // import optionsComponent from '@/components/OptionComponent'
@@ -34,6 +37,7 @@
             VTextField,
             VTextarea,
             VSelect,
+            StageComponent,
             // optionsComponent,
             // crysmTypeComponent,
             // abilityConditionsComponent,
