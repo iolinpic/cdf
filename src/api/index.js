@@ -7,6 +7,7 @@ import crysms from "./crysms";
 import items from "./items";
 import zones from "./zone";
 import actors from "./actor";
+import quests from "./quest";
 
 export default {
     conditions,
@@ -18,4 +19,5 @@ export default {
     items,
     zones,
     actors,
+    quests,
 }

@@ -2,7 +2,7 @@ export const QValues = {
     "DisplayNameText": "",
     "DescriptionText": "",
     "Type": "Main",
-    "FirstStageId":"",
+    // "FirstStageId":"",
     "Stage": [],
 };
 export const QTypes = ['Main', 'Secondary'];
