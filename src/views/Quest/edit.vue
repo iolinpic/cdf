@@ -11,7 +11,6 @@
                 </template>
                 <stage-component v-model="quest.Stage" :qid="$route.params.id"></stage-component>
             </v-form>
-
         </v-card-text>
         <v-card-actions>
             <v-btn color="green" @click="submit">Сохранить</v-btn>
