@@ -1,6 +1,6 @@
 <template>
-    <v-autocomplete :items="zones" v-model="obj.Map" item-value="DisplayNameText" item-text="DisplayNameText"
-                    label="Карта" :loading="loading"></v-autocomplete>
+    <v-autocomplete :items="zones" :value="value" item-value="DisplayNameText" item-text="DisplayNameText"
+                    label="Карта" :loading="loading" @input="inputSelect"></v-autocomplete>
 </template>
 <script>
     import api from '@/api'
@@ -14,7 +14,9 @@
             }
         },
         props: {
-            obj: Object,
+            // obj: Object,
+            value:String,
+            label:String,
         },
         mounted() {
             this.getAll();
@@ -26,6 +28,9 @@
                     this.zones = res.data;
                     this.loading = false;
                 })
+            },
+            inputSelect(val){
+                this.$emit('input',val);
             },
         }
     }
