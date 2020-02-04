@@ -60,6 +60,10 @@
                 api.crysms.one(this.$route.params.id).then((res) => {
                     delete res.data.id;
                     this.crysm = res.data;
+                    //added blueprint field fix (remove when all blueprints will be updated
+                    if(!this.crysm.hasOwnProperty('Blueprint')){
+                        this.crysm.Blueprint = "";
+                    }
                 });
             },
             back() {

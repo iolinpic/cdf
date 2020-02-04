@@ -6,6 +6,7 @@
             <tr>
                 <th class="text-left">Название</th>
                 <th class="text-left">Описание</th>
+                <th class="text-left">Blueprint</th>
                 <th class="text-left">Эволюция</th>
                 <th class="text-left">Действия</th>
             </tr>
@@ -18,6 +19,7 @@
                     {{ item.DisplayNameText }}
                 </td>
                 <td>{{ item.DescriptionText }}</td>
+                <td>{{ item.Blueprint }}</td>
                 <td>
                     <v-btn icon @click="openDialog(item)" v-if="item.tier<3">
                         <v-icon>add</v-icon>

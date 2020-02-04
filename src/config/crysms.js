@@ -17,6 +17,7 @@ export const CItems={
 export const CValues = {
     "PreviousConfig": "",
     "DisplayNameText": "",
+    "Blueprint": "",
     "DescriptionText": "",
     "DefaultHitPoints": 150,
     "DefaultAttack": 5,
@@ -127,6 +128,10 @@ export const CFieldSettings = {
     "DefaultDefence": {
         component: "optionsComponent",
         label: "Базовая защита",
+    },
+    "Blueprint": {
+        component: "VTextField",
+        label: "Blueprint",
     },
     "DefaultEvasion": {
         component: "optionsComponent",
