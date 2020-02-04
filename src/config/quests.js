@@ -84,7 +84,7 @@ export const QGValues = {
 export const QGOptionsFieldSettings = {
     "Talk": {
         "NPC": {
-            component: "VTextField",
+            component: "npcSelect",
             label: "Название NPC",
         },
     },

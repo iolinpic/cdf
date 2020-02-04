@@ -14,21 +14,26 @@
 <script>
     import {QGoalTypes, QGOptions, QGOptionsFieldSettings} from "@/config/quests";
     import {VTextField, VTextarea, VSelect} from 'vuetify/lib'
+    import npcSelect from "@/components/npcSelect";
 
     export default {
         name: "GoalSingleComponent",
         data() {
             return {
-                GoalOptions: {},
+                // GoalOptions: {},
             };
         },
         components:{
             VTextField,
             VTextarea,
             VSelect,
+            npcSelect,
         },
         props: {
             value: Object,
+        },
+        mounted(){
+
         },
         computed: {
             types() {
