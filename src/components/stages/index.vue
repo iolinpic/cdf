@@ -2,7 +2,7 @@
     <v-card flat>
         <v-card-title class="px-0">Stages
             <v-spacer></v-spacer>
-            <v-btn color="green" @click="addStage('')">Добавить</v-btn>
+            <v-btn color="green" @click="addStage()">Добавить</v-btn>
         </v-card-title>
         <v-card-text class="px-0">
             <v-expansion-panels multiple>
@@ -23,7 +23,7 @@
 
                     <v-expansion-panel-content>
                         <v-textarea v-model="item.StageDescriptionText" label="Описание стадии"></v-textarea>
-                        <goals-component v-model="item.Goals"></goals-component>
+                        <goals-component v-model="item.Goals" :stage="index"></goals-component>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
             </v-expansion-panels>
@@ -61,11 +61,12 @@
             // },
         },
         methods: {
-            addStage(description) {
-                const data = Object.assign({}, QSValues);
+            addStage() {
+                const data = JSON.parse(JSON.stringify(QSValues));
+                // let data = Object.assign({}, QSValues);
                 // const object_number = this.value.length;
                 // data.StageDescription = 'stage_description_'+object_number+'_'+this.qid;
-                data.StageDescriptionText = description;
+                // data.StageDescriptionText = description;
                 this.value.push(data);
             },
             deleteOne(id) {

@@ -5,8 +5,8 @@
             <v-btn color="green" @click="addGoal">Добавить</v-btn>
         </v-card-title>
         <v-card-text class="px-0">
-            <template v-for="(goal,index) in value">
-                <single-goal-component :value="goal" :divider="index>=0&&index<value.length-1" :key="`goal_${index}`" @del="deleteGoal(index)"></single-goal-component>
+            <template v-for="(goal,indexGoal) in value">
+                <single-goal-component :value="goal" :divider="indexGoal>=0&&indexGoal<value.length-1" :key="`goal_${indexGoal}_${stage}`" @del="deleteGoal(indexGoal)"></single-goal-component>
             </template>
         </v-card-text>
     </v-card>
@@ -27,10 +27,13 @@
         },
         props: {
             value: Array,
+            stage: Number,
         },
         methods: {
             addGoal() {
-                this.value.push(Object.assign({}, QGValues));
+                // const data = JSON.parse(JSON.stringify(object))
+                const data = Object.assign({}, QGValues);
+                this.value.push(data);
             },
             deleteGoal(index){
                 this.value.splice(index, 1);
