@@ -36,6 +36,12 @@ const menu = [
         exact: false,
     },
     {
+        path: 'draw',
+        title: 'Рисовать',
+        icon: 'album',
+        exact: false,
+    },
+    {
         path: 'pack',
         title: 'Комплекты способностей',
         icon: 'art_track',

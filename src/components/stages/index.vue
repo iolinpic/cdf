@@ -65,25 +65,36 @@
                 const data = JSON.parse(JSON.stringify(QSValues));
                 // let data = Object.assign({}, QSValues);
                 // const object_number = this.value.length;
-                // data.StageDescription = 'stage_description_'+object_number+'_'+this.qid;
+
                 // data.StageDescriptionText = description;
                 this.value.push(data);
+                // this.descriptionChange(this.value[this.value.length -1],this.value.length -1);
             },
             deleteOne(id) {
                 this.value.splice(id, 1);
+                for (let index=id;index<this.value.length;index++) {
+                    this.descriptionChange(this.value[index],index);
+                }
+            },
+            descriptionChange(data,index){
+                data.StageDescription = `stage_description_${index}_${this.qid}`;
             },
             moveUp(index) {
                 if (index <= 0) return;
                 let tmp = this.value[index - 1];
                 this.value[index - 1] = this.value[index];
+                // this.descriptionChange(this.value[index-1],index-1);
                 this.value[index] = tmp;
+                // this.descriptionChange(this.value[index],index);
                 this.$forceUpdate();
             },
             moveDown(index) {
                 if (index >= this.value.length - 1) return;
                 let tmp = this.value[index + 1];
                 this.value[index + 1] = this.value[index];
+                // this.descriptionChange(this.value[index+1],index+1);
                 this.value[index] = tmp;
+                // this.descriptionChange(this.value[index],index);
                 this.$forceUpdate();
             }
             // updValue(val) {

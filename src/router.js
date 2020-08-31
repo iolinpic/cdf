@@ -181,6 +181,12 @@ const router =new Router({
             beforeEnter: hooks.ifAuthenticated
         },
         {
+            path: '/draw',
+            name: 'draw',
+            component: () => import(/* webpackChunkName: "draw" */ './views/Draw.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
             path: '/login',
             name: 'login',
             // route level code-splitting
