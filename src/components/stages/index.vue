@@ -22,6 +22,7 @@
                     </v-expansion-panel-header>
 
                     <v-expansion-panel-content>
+                        <v-text-field v-model="item.StageNameText" label="Название стадии"></v-text-field>
                         <v-textarea v-model="item.StageDescriptionText" label="Описание стадии"></v-textarea>
                         <goals-component v-model="item.Goals" :stage="index"></goals-component>
                     </v-expansion-panel-content>
@@ -72,13 +73,13 @@
             },
             deleteOne(id) {
                 this.value.splice(id, 1);
-                for (let index=id;index<this.value.length;index++) {
+               /* for (let index=id;index<this.value.length;index++) {
                     this.descriptionChange(this.value[index],index);
-                }
+                }*/
             },
-            descriptionChange(data,index){
+            /*descriptionChange(data,index){
                 data.StageDescription = `stage_description_${index}_${this.qid}`;
-            },
+            },*/
             moveUp(index) {
                 if (index <= 0) return;
                 let tmp = this.value[index - 1];

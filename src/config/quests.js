@@ -23,14 +23,20 @@ export const QFieldSettings = {
 };
 export const QSValues = {
     "StageDescriptionText": "",
+    "StageNameText": "",
     // "StageDescription": "",
     "Goals": [],
 };
 export const QSFieldSettings = {
+    "StageNameText": {
+        component: "VTextField",
+        label: "Название стадии",
+    },
     "StageDescriptionText": {
         component: "VTextarea",
         label: "Описание",
     },
+
 };
 export const QGoalTypes = ['Talk', 'TransferCrysm', 'TransferItem', 'TransferResource', 'DefeatCrysm', 'CatchCrysm', 'DefeatNPC', 'CustomGoal'];
 
