@@ -24,7 +24,8 @@ export const QFieldSettings = {
 export const QSValues = {
     "StageDescriptionText": "",
     "StageNameText": "",
-    // "StageDescription": "",
+    "StageName": "",
+    "StageDescription": "",
     "Goals": [],
 };
 export const QSFieldSettings = {
