@@ -8,6 +8,7 @@ import items from "./items";
 import zones from "./zone";
 import actors from "./actor";
 import quests from "./quest";
+import file from "./file";
 
 export default {
     conditions,
@@ -20,4 +21,5 @@ export default {
     zones,
     actors,
     quests,
+    file,
 }
