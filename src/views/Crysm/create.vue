@@ -3,7 +3,7 @@
         <v-card-text>
             <v-form v-model="valid">
                 <template v-if="keys.length>=1">
-                    <file-upload type="IconSmall"></file-upload>
+                    <file-upload type="IconSmall" :path="''"></file-upload>
                     <v-flex sm12 v-for="key in keys" :key="key">
                         <div :is="settings[key].component" :items="settings[key].items?settings[key].items:''"
                              :label="settings[key].label" v-model="crysm[key]"></div>
@@ -25,7 +25,7 @@
     import crysmTypeComponent from '@/components/CrysmTypeComponent'
     import optionsComponent from '@/components/OptionComponent'
     import milestonesComponent from '@/components/milestones/array'
-    import fileUpload from "@/components/FileUploadComponent"
+    import fileUpload from "@/components/FilePreviewComponent"
 
 
     export default {
