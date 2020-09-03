@@ -1,10 +1,11 @@
 <template>
     <div class="file-container">
-        <file :type="type"  v-if="path===''" @uploaded="updFiles"></file>
+        <file :type="label"  v-if="value===''" :value="value" @input="updFiles"></file>
         <div v-else class="file-list-item">
             <img class="left-icon" :src="imgPath" width="70px" height="70px">
-            <div class="type">{{type}}</div>
+            <div class="type">{{label}}</div>
             <div class="d-inline">Путь: {{imgPath}}</div>
+            <v-btn @click="change">Заменить</v-btn>
         </div>
     </div>
 </template>
@@ -17,16 +18,19 @@
         },
         computed:{
             imgPath(){
-                return "http://localhost:3000/"+this.path;
+                return "http://localhost:3000/"+this.value;
             }
         },
         props:{
-            type:String,
-            path:String,
+            label:String,
+            value:String,
         },
         methods:{
           updFiles(val){
-              this.path = val.path;
+            this.$emit('input',val);
+          },
+          change(){
+            this.updFiles("");
           }
         }
     }

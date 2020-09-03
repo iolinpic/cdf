@@ -16,6 +16,8 @@ export const CItems={
 };
 export const CValues = {
     "PreviousConfig": "",
+    "IconSmall": "",
+    "IconBig": "",
     "DisplayNameText": "",
     "Blueprint": "",
     "DescriptionText": "",
@@ -108,6 +110,14 @@ export const CFieldSettings = {
     "DisplayNameText": {
         component: "VTextField",
         label: "Название",
+    },
+    "IconSmall": {
+        component: "fileUpload",
+        label: "IconSmall",
+    },
+    "IconBig": {
+        component: "fileUpload",
+        label: "IconBig",
     },
     "DescriptionText": {
         component: "VTextarea",

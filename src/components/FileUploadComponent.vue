@@ -36,6 +36,7 @@
         },
         props: {
             type: String,
+            value: String,
         },
         methods: {
             pickFile() {
@@ -69,7 +70,7 @@
                             data.append('type', this.type);
                             api.file.upload(data).then((res) => {
                                 this.$store.commit(types.UI_ALERT_SHOW,{type: 'success', message: 'Файл загружен!'});
-                                this.$emit('uploaded',res.data);
+                                this.$emit('input',res.data.path);
                                 this.clear();
                             });
                         }
