@@ -5,6 +5,8 @@ export const ActorValues = {
     "DisplayNameText": '',
     "DescriptionText": '',
     "Icon": '',
+    "EquipAtrifacts": [],
+    "Consumables": [],
 };
 export const ActorFieldSettings = {
     "DisplayNameText": {
@@ -19,4 +21,27 @@ export const ActorFieldSettings = {
         component: "fileUpload",
         label: "Icon",
     },
+    "EquipArtifacts": {
+        component: "actorSelectEquippedComponent",
+        label: "Надетые артефакты",
+    },
+    "Consumables": {
+        component: "actorConsumablesComponent",
+        label: "Предметы",
+    },
 };
+export const ActorEquippedValue = {
+    "ContentId":0,
+}
+
+export const ActorEquippedItems={
+    Type:"Artifact",
+}
+export const ActorConsumeItems={
+    Type:"Consum",
+}
+
+export const ActorConsumableValue = {
+    "ContentId":0,
+    "Count":0,
+}

@@ -21,6 +21,8 @@ import api from "@/api"
 import {ActorFieldSettings, ActorValues} from "@/config/actors";
 import fileUpload from "@/components/FilePreviewComponent"
 import {VTextField, VTextarea} from 'vuetify/lib'
+import actorSelectEquippedComponent from '@/components/actorSelectEquippedComponent'
+import actorConsumablesComponent from "@/components/actorConsumablesComponent";
 
 export default {
   name: 'ActorEdit',
@@ -30,7 +32,9 @@ export default {
   components: {
     VTextField,
     VTextarea,
-    fileUpload
+    fileUpload,
+    actorSelectEquippedComponent,
+    actorConsumablesComponent
   },
   data() {
     return {

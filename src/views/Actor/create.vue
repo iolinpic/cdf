@@ -21,6 +21,8 @@ import api from "@/api"
 import {ActorValues, ActorFieldSettings} from "@/config/actors";
 import {VTextField, VTextarea} from 'vuetify/lib'
 import fileUpload from "@/components/FilePreviewComponent"
+import actorSelectEquippedComponent from "@/components/actorSelectEquippedComponent";
+import actorConsumablesComponent from "@/components/actorConsumablesComponent";
 // import abilityConditionsComponent from "@/components/AbilityConditionsComponent";
 // import crysmTypeComponent from '@/components/CrysmTypeComponent'
 // import optionsComponent from '@/components/OptionComponent'
@@ -33,7 +35,9 @@ export default {
   components: {
     VTextField,
     VTextarea,
-    fileUpload
+    fileUpload,
+    actorSelectEquippedComponent,
+    actorConsumablesComponent,
     // VSelect,
     // optionsComponent,
     // crysmTypeComponent,
