@@ -18,7 +18,7 @@
         },
         computed:{
             imgPath(){
-                return "http://localhost:3000/"+this.value;
+                return "/"+this.value;
             }
         },
         props:{
