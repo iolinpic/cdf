@@ -11,6 +11,7 @@
         <v-textarea name="description" v-validate="'required'" label="Описание"
                     :error-messages="errors.collect('description')" v-model="condition.DescriptionText">
         </v-textarea>
+        <file-upload label="Icon" v-model="condition.Icon"></file-upload>
         <crysm-type-component label="Имунные к состоянию" v-model="condition.Immunity"></crysm-type-component>
         <v-select v-model="type" :items="conditionTypes" label="Тип состояния" item-text="name"
                   :item-value="Object"
@@ -56,6 +57,7 @@ import crysmTypeComponent from '@/components/CrysmTypeComponent'
 import conditionsTypeComponent from '@/components/condType/array'
 import conditionsSingle from "@/components/conditions/single";
 import optionsComponent from '@/components/OptionComponent'
+import fileUpload from "@/components/FilePreviewComponent"
 
 export default {
   name: 'ConditionsCreate',
@@ -68,12 +70,14 @@ export default {
     optionsComponent,
     crysmTypeComponent,
     conditionsSingle,
+    fileUpload
   },
   data() {
     return {
       condition: {
         DisplayNameText: '',
         DescriptionText: '',
+        Icon: '',
         Type: 0,
         Subtype: 0,
         Immunity: [],

@@ -1,5 +1,5 @@
 <template>
-  <v-select v-model="condition" :items="filteredItems" item-value="id" item-text="DisplayNameText" :loading="loading" @input="updValue" :label="label"></v-select>
+  <v-select :value="value" :items="filteredItems" item-value="id" item-text="DisplayNameText" :loading="loading" @input="updValue" :label="label"></v-select>
 </template>
 <script>
 import api from '@/api'
@@ -9,12 +9,12 @@ export default {
   data() {
     return {
       loading: false,
-      condition: 0,
+      //condition: 0,
       condItems: [],
     };
   },
   props: {
-    value: Number,
+    value: String,
     label: String,
     type: String,
   },
@@ -32,9 +32,14 @@ export default {
     this.getConditions();
   },
   watch: {
-    value(val) {
+    /*value(val) {
+      /!*this.condItems.forEach((el)=>{
+        if(el.id===val){
+          this.condition = el;
+        }
+      })*!/
       this.condition = val;
-    },
+    },*/
   },
   methods: {
     getConditions() {
