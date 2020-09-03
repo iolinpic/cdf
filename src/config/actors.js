@@ -4,6 +4,7 @@
 export const ActorValues = {
     "DisplayNameText": '',
     "DescriptionText": '',
+    "Icon": '',
 };
 export const ActorFieldSettings = {
     "DisplayNameText": {
@@ -13,5 +14,9 @@ export const ActorFieldSettings = {
     "DescriptionText": {
         component: "VTextarea",
         label: "Описание",
+    },
+    "Icon": {
+        component: "fileUpload",
+        label: "Icon",
     },
 };
