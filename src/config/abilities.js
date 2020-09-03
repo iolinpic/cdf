@@ -4,6 +4,7 @@ export const AAnimations = ['Normal', 'Super'];
 export const AValues = {
     "DisplayNameText": '',
     "DescriptionText": '',
+    "Icon":'',
     "AnimationType": 'Normal',
     "AbilitType": 'AT_Damage',
     "AbilityDirection": 'D_Solo',
@@ -26,6 +27,10 @@ export const AFieldSettings = {
     "DescriptionText": {
         component: "VTextarea",
         label: "Описание",
+    },
+    "Icon": {
+        component: "fileUpload",
+        label: "Icon",
     },
     "AbilitType": {
         component: "VSelect",

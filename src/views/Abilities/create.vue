@@ -22,6 +22,7 @@
     import abilityConditionsComponent from "@/components/AbilityConditionsComponent";
     import crysmTypeComponent from '@/components/CrysmTypeComponent'
     import optionsComponent from '@/components/OptionComponent'
+    import fileUpload from "@/components/FilePreviewComponent";
 
     export default {
         name: 'AbilitiesCreate',
@@ -35,6 +36,7 @@
             optionsComponent,
             crysmTypeComponent,
             abilityConditionsComponent,
+            fileUpload
         },
         data() {
             return {
