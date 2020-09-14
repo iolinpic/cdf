@@ -9,7 +9,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(item,id) in packs" :key="item.id">
+            <tr v-for="(item,id) in filteredPacks" :key="item.id">
                 <td>{{ item.Name }}</td>
                 <td><v-btn icon @click="$router.push({name:'pack.edit',params:{id:item.id}})"><v-icon>edit</v-icon></v-btn><v-btn icon><v-icon @click="deleteOne(id)">delete</v-icon></v-btn></td>
             </tr>
@@ -51,6 +51,11 @@
             }
         },
         computed:{
+          filteredPacks(){
+            let orderedPack = this.packs;
+            orderedPack.sort(this.sortMethod)
+            return orderedPack;
+          }
         },
         mounted(){
             this.getAll();
@@ -65,6 +70,27 @@
                     this.packs = res.data;
                     this.loading = false
                 });
+            },
+            sortMethod(a,b){
+              let tmpA = a.Name.split('_');
+              let tmpB = b.Name.split('_');
+              if(tmpA.length ===3 && tmpB.length ===3){
+                if(tmpA[0]>tmpB[0]){
+                  return 1;
+                }else if(tmpA[0]<tmpB[0]){
+                  return -1;
+                }else{
+                  if(tmpA[2]>tmpB[2]){
+                    return 1;
+                  }else if(tmpA[2]<tmpB[2]){
+                    return -1;
+                  }else{
+                    return 0;
+                  }
+                }
+              }else{
+                return 0;
+              }
             },
             deleteOne(id){
                 api.aPack.delete(this.packs[id].id).then(()=>{

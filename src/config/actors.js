@@ -5,7 +5,7 @@ export const ActorValues = {
     "DisplayNameText": '',
     "DescriptionText": '',
     "Icon": '',
-    "EquipAtrifacts": [],
+    "EquipArtifacts": [],
     "Consumables": [],
 };
 export const ActorFieldSettings = {
