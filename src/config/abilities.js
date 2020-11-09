@@ -17,7 +17,8 @@ export const AValues = {
     "RestTime": 2.0,
     "DamageTypes": [],
     "ConditionTarget": [],
-    "ConditionSelf": []
+    "ConditionSelf": [],
+    "FX":"",
 };
 export const AFieldSettings = {
     "DisplayNameText": {
@@ -86,5 +87,9 @@ export const AFieldSettings = {
     "ConditionSelf": {
         component: 'abilityConditionsComponent',
         label: "Список статусных эффектов, которые будут наложены на атакующего с некоторым шансом.",
-    }
+    },
+    "FX": {
+        component: "VTextField",
+        label: "FX",
+    },
 };
