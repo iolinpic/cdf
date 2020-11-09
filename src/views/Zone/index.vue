@@ -22,7 +22,7 @@
 <script>
     import {UI_TOOLBAR_BTNS,UI_TOOLBAR_BTNS_CLEAR} from "@/store/mutation-types";
     import api from '@/api';
-    // import fileDownload from 'js-file-download'
+    import fileDownload from 'js-file-download'
     export default {
         name:'ZonePage',
         metaInfo: {
@@ -40,15 +40,15 @@
                             this.$router.push({name:'zones.create'});
                         }
                     },
-                    // {
-                    //     text:'Сгенерировать',
-                    //     icon:'add',
-                    //     click:()=>{
-                    //         api.zones.generate().then((res)=>{
-                    //             fileDownload(res.data,'zones.zip');
-                    //         });
-                    //     }
-                    // },
+                    {
+                        text:'Сгенерировать',
+                        icon:'add',
+                        click:()=>{
+                            api.zones.generate().then((res)=>{
+                                fileDownload(res.data,'zones.zip');
+                            });
+                         }
+                    },
                 ],
             }
         },
