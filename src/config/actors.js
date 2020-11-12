@@ -17,7 +17,7 @@ export const DialogGreetingsValues={
     "Conditions":[],
 }
 export const DialogGreetingsConditionTypes=['Quest','Crysm','Item','Resource','Map'];
-export const DialogGreetingsQuestStatuses=['Active','Failed'];
+export const DialogGreetingsQuestStatuses={quest:['Unknown','Active','Failed','Complete','HideFailed'],stage:['Unknown','Active','Failed','Complete'],goal:['InProgress','Ready','Complete','Failed']};
 export const DialogGreetingsConditionOptions={
     "Quest":{
         "QuestId": "5f44ae0a7495bc17024efe46", // id квеста
@@ -54,7 +54,7 @@ export const DialogGreetingsConditionOptionsSettings={
         "QuestStatus": {
             component: "VSelect",
             label: "Статус квеста",
-            items: DialogGreetingsQuestStatuses,
+            items: DialogGreetingsQuestStatuses.quest,
         }, //Статус необходимый для квеста.
         "QuestStageId": {
             component: "OptionComponent",
@@ -63,7 +63,7 @@ export const DialogGreetingsConditionOptionsSettings={
         "StageStatus": {
             component: "VSelect",
             label: "Статус стадии",
-            items: DialogGreetingsQuestStatuses,
+            items: DialogGreetingsQuestStatuses.stage,
         }, //Статус необходимый для стадии.
         "StageGoalId": {
             component: "OptionComponent",
@@ -72,7 +72,7 @@ export const DialogGreetingsConditionOptionsSettings={
         "GoalStatus": {
             component: "VSelect",
             label: "Статус цели",
-            items: DialogGreetingsQuestStatuses,
+            items: DialogGreetingsQuestStatuses.goal,
         } //Статус необходимый для цели.
     },
     "Crysm":{
