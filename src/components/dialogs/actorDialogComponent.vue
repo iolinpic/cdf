@@ -13,6 +13,7 @@
     import {VTextField, VSwitch, VSelect} from 'vuetify/lib'
     import OptionComponent from "../OptionComponent";
     import actorDialogConditionsComponent from "./actorDialogConditionsComponent";
+    import dialogSelectComponent from "./dialogSelectComponent";
 
     export default {
         name: 'actorDialogComponent',
@@ -34,6 +35,7 @@
             VSwitch,
             VSelect,
             actorDialogConditionsComponent,
+            dialogSelectComponent,
         },
         computed: {
             keys() {

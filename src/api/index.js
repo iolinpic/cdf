@@ -9,6 +9,7 @@ import zones from "./zone";
 import actors from "./actor";
 import quests from "./quest";
 import file from "./file";
+import dialogs from "./dialogs";
 
 export default {
     conditions,
@@ -22,4 +23,5 @@ export default {
     actors,
     quests,
     file,
+    dialogs,
 }

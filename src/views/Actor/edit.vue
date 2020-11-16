@@ -22,6 +22,7 @@ import {ActorFieldSettings, ActorValues} from "@/config/actors";
 import fileUpload from "@/components/FilePreviewComponent"
 import {VTextField, VTextarea} from 'vuetify/lib'
 import actorSelectEquippedComponent from '@/components/actorSelectEquippedComponent'
+import actorDialogsComponent from "@/components/dialogs/actorDialogsComponent";
 import actorConsumablesComponent from "@/components/actorConsumablesComponent";
 
 export default {
@@ -34,7 +35,8 @@ export default {
     VTextarea,
     fileUpload,
     actorSelectEquippedComponent,
-    actorConsumablesComponent
+    actorConsumablesComponent,
+    actorDialogsComponent,
   },
   data() {
     return {

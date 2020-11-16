@@ -146,8 +146,8 @@ export const DialogGreetingsSettings={
         label:"Условия",
     },
     "DialogId":{
-        component:"VTextField",
-        label:"id"
+        component:"dialogSelectComponent",
+        label:"Диалог"
     },
 }
 export const ActorFieldSettings = {

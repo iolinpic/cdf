@@ -86,6 +86,24 @@ const router =new Router({
             beforeEnter: hooks.ifAuthenticated
         },
         {
+            path: '/dialogs',
+            name: 'dialogs',
+            component: () => import(/* webpackChunkName: "dialog" */ './views/Dialog/index.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/dialogs/create',
+            name: 'dialogs.create',
+            component: () => import(/* webpackChunkName: "dialogCreate" */ './views/Dialog/create.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/dialogs/:id',
+            name: 'dialogs.edit',
+            component: () => import(/* webpackChunkName: "dialogEdit" */ './views/Dialog/edit.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
             path: '/zones',
             name: 'zones',
             component: () => import(/* webpackChunkName: "zone" */ './views/Zone/index.vue'),
