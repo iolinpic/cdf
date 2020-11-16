@@ -24,6 +24,12 @@ const menu = [
         exact: false,
     },
     {
+        path: 'dialogs',
+        title: 'Диалоги',
+        icon: 'art_track',
+        exact: false,
+    },
+    {
         path: 'zones',
         title: 'Карты',
         icon: 'album',

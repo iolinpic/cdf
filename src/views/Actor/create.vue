@@ -23,6 +23,7 @@ import {VTextField, VTextarea} from 'vuetify/lib'
 import fileUpload from "@/components/FilePreviewComponent"
 import actorSelectEquippedComponent from "@/components/actorSelectEquippedComponent";
 import actorConsumablesComponent from "@/components/actorConsumablesComponent";
+import actorDialogsComponent from "@/components/dialogs/actorDialogsComponent";
 // import abilityConditionsComponent from "@/components/AbilityConditionsComponent";
 // import crysmTypeComponent from '@/components/CrysmTypeComponent'
 // import optionsComponent from '@/components/OptionComponent'
@@ -38,6 +39,7 @@ export default {
     fileUpload,
     actorSelectEquippedComponent,
     actorConsumablesComponent,
+    actorDialogsComponent,
     // VSelect,
     // optionsComponent,
     // crysmTypeComponent,
@@ -45,19 +47,20 @@ export default {
   },
   data() {
     return {
-      ability: ActorValues,
+      ability:Object.assign({},ActorValues),
       valid: true,
     }
   },
   computed: {
     keys() {
-      return Object.keys(this.ability);
+      return Object.keys(ActorValues);
     },
     settings() {
       return ActorFieldSettings;
     },
   },
-  watch: {},
+  mounted() {
+    },
   methods: {
     back() {
       this.$router.push({name: 'actors'});
