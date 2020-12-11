@@ -7,7 +7,7 @@
         name:'CrysmTypeComponent',
         data(){
             return {
-                crysmType:[],
+                //crysmType:[],
             }
         },
         props:{
@@ -18,15 +18,22 @@
             crysmTypes() {
                 return crysmTypes;
             },
-        },
-        watch: {
-            value(val){
-                this.crysmType = [];
-                val.forEach((el)=>{
-                    this.crysmType.push(this.crysmTypes[el]);
+            crysmType(){
+                let tmp = []
+                this.value.forEach((el)=>{
+                    tmp.push(this.crysmTypes[el]);
                 })
+                return tmp;
             },
         },
+        // watch: {
+        //     value(val){
+        //         this.crysmType = [];
+        //         val.forEach((el)=>{
+        //             this.crysmType.push(this.crysmTypes[el]);
+        //         })
+        //     },
+        // },
         methods:{
             updValue(val){
                 const tmp = val.map((el) => {
