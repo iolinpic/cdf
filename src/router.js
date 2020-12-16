@@ -181,6 +181,24 @@ const router =new Router({
             beforeEnter: hooks.ifAuthenticated
         },
         {
+            path: '/spack',
+            name: 'spack',
+            component: () => import(/* webpackChunkName: "spack" */ './views/SPack/index.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/spack/create',
+            name: 'spack.create',
+            component: () => import(/* webpackChunkName: "spackCreate" */ './views/SPack/create.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
+            path: '/spack/:id',
+            name: 'spack.edit',
+            component: () => import(/* webpackChunkName: "spackEdit" */ './views/SPack/edit.vue'),
+            beforeEnter: hooks.ifAuthenticated
+        },
+        {
             path: '/item',
             name: 'item',
             component: () => import(/* webpackChunkName: "item" */ './views/Items/index.vue'),

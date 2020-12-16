@@ -10,6 +10,7 @@ import actors from "./actor";
 import quests from "./quest";
 import file from "./file";
 import dialogs from "./dialogs";
+import spack from "./spack";
 
 export default {
     conditions,
@@ -24,4 +25,5 @@ export default {
     quests,
     file,
     dialogs,
+    spack,
 }

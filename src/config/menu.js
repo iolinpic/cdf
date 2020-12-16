@@ -54,6 +54,12 @@ const menu = [
         exact: false,
     },
     {
+        path: 'spack',
+        title: 'Сундуки',
+        icon: 'art_track',
+        exact: false,
+    },
+    {
         path: 'crysm',
         title: 'Кризмы',
         icon: 'hearing',
