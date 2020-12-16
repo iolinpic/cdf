@@ -19,6 +19,7 @@ export const AValues = {
     "ConditionTarget": [],
     "ConditionSelf": [],
     "FX":"",
+    "HitFX":"",
 };
 export const AFieldSettings = {
     "DisplayNameText": {
@@ -91,5 +92,9 @@ export const AFieldSettings = {
     "FX": {
         component: "VTextField",
         label: "FX",
+    },
+    "HitFX": {
+        component: "VTextField",
+        label: "HitFX",
     },
 };
