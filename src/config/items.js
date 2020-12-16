@@ -35,6 +35,12 @@ export const ITypes = [
                 name: "Evolution",
                 ItemOption: {},
             },
+            {
+                name:"Dust",
+                ItemOption: {
+                    "DustPower": 100,
+                },
+            },
         ]
     },
     {
@@ -82,6 +88,10 @@ export const ITypesSettings = {
     "CooldownTime": {
         component: "optionsComponent",
         label: "Кулдаун",
+    },
+    "DustPower": {
+        component: "optionsComponent",
+        label: "Количество пыли",
     },
     "StatusEffects": {//статусы тип 11/0
         component: 'conditionsArray',
