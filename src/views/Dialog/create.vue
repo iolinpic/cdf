@@ -46,13 +46,14 @@
         },
         computed: {
             keys() {
-                return Object.keys(DialogValues);
+                return Object.keys(DialogFieldSettings);
             },
             settings() {
                 return DialogFieldSettings;
             },
         },
         mounted() {
+            this.dialog.Stages = [];
         },
         methods: {
             back() {
