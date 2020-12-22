@@ -14,7 +14,7 @@
                         :key="'dialog_'+index"
                 >
                     <v-expansion-panel-header>
-                        <span>{{item.TextLine}}</span>
+                        <span>{{item.StageId}}_{{item.TextLine}}</span>
                         <div>
 
                             <v-btn icon @click="removeValue(index)">
