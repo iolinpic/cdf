@@ -43,6 +43,7 @@
         data() {
             return {
                 loading: false,
+                //lastId:0,
             };
         },
         props: {
@@ -54,8 +55,21 @@
         },
 
         methods: {
+            nextId(){
+                let lastId = this.value.length;
+                if(this.value.length>0){
+                    if(this.value[this.value.length-1].StageId>lastId){
+                        lastId = this.value[this.value.length-1].StageId+1;
+                    }
+                }
+                return lastId;
+            },
             addValue() {
-                this.value.push(Object.assign({},DialogStageValues));
+                const data = Object.assign({},DialogStageValues);
+
+                data.StageId = this.nextId();
+                //this.lastId ++;
+                this.value.push(data);
             },
             removeValue(index) {
                 this.value.splice(index, 1);
