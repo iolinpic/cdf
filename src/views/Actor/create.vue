@@ -19,7 +19,7 @@
 <script>
 import api from "@/api"
 import {ActorValues, ActorFieldSettings} from "@/config/actors";
-import {VTextField, VTextarea} from 'vuetify/lib'
+import {VTextField, VTextarea, VSelect} from 'vuetify/lib'
 import fileUpload from "@/components/FilePreviewComponent"
 import actorSelectEquippedComponent from "@/components/actorSelectEquippedComponent";
 import actorConsumablesComponent from "@/components/actorConsumablesComponent";
@@ -36,6 +36,7 @@ export default {
   components: {
     VTextField,
     VTextarea,
+    VSelect,
     fileUpload,
     actorSelectEquippedComponent,
     actorConsumablesComponent,

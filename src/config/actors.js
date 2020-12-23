@@ -2,10 +2,12 @@ export const ActorValues = {
     "DisplayNameText": '',
     "DescriptionText": '',
     "Icon": '',
+    'Tech':'Игровой',
     "EquipArtifacts": [],
     "Consumables": [],
     "DialogGreetings":[],
 };
+export const TechOps = ['Игровой', 'Технический']
 export const DialogGreetingsTypes = ['Message','Talk'];
 export const DialogGreetingsValues={
     "Name":"Диалог 1",
@@ -158,6 +160,11 @@ export const ActorFieldSettings = {
     "DescriptionText": {
         component: "VTextarea",
         label: "Описание",
+    },
+    "Tech": {
+        component: "VSelect",
+        label: "Тип",
+        items: TechOps,
     },
     "Icon": {
         component: "fileUpload",

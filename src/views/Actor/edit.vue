@@ -20,7 +20,7 @@
 import api from "@/api"
 import {ActorFieldSettings, ActorValues} from "@/config/actors";
 import fileUpload from "@/components/FilePreviewComponent"
-import {VTextField, VTextarea} from 'vuetify/lib'
+import {VTextField, VTextarea,VSelect} from 'vuetify/lib'
 import actorSelectEquippedComponent from '@/components/actorSelectEquippedComponent'
 import actorDialogsComponent from "@/components/dialogs/actorDialogsComponent";
 import actorConsumablesComponent from "@/components/actorConsumablesComponent";
@@ -31,6 +31,7 @@ export default {
     title: 'Редактирование  NPC',
   },
   components: {
+    VSelect,
     VTextField,
     VTextarea,
     fileUpload,
