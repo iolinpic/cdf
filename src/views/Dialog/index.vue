@@ -1,7 +1,41 @@
 <template>
     <v-card>
-        <v-progress-linear indeterminate v-if="loading"></v-progress-linear>
-        <v-simple-table v-else>
+<!--        <v-progress-linear indeterminate v-if="loading"></v-progress-linear>-->
+      <v-card-title>
+        <v-spacer></v-spacer>
+        <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Поиск"
+            single-line
+            hide-details
+        ></v-text-field>
+      </v-card-title>
+      <v-data-table
+          :headers="headers"
+          :items="dialogs"
+          :search="search"
+          :loading="loading"
+          :items-per-page="40"
+          :sort-by="'Name'"
+      >
+        <template v-slot:item.actions="{ item }">
+          <v-icon
+              small
+              class="mr-2"
+              @click="$router.push({name:'dialogs.edit',params:{id:item.id}})"
+          >
+            mdi-pencil
+          </v-icon>
+          <v-icon
+              small
+              @click="deleteOne(item.id)"
+          >
+            mdi-delete
+          </v-icon>
+        </template>
+      </v-data-table>
+<!--        <v-simple-table v-else>
             <thead>
             <tr>
                 <th class="text-left">Название</th>
@@ -14,7 +48,7 @@
                 <td><v-btn icon @click="$router.push({name:'dialogs.edit',params:{id:item.id}})"><v-icon>edit</v-icon></v-btn><v-btn icon><v-icon @click="deleteOne(id)">delete</v-icon></v-btn></td>
             </tr>
             </tbody>
-        </v-simple-table>
+        </v-simple-table>-->
     </v-card>
 </template>
 <script>
@@ -28,6 +62,15 @@
         },
         data(){
             return {
+              search:'',
+              headers:[
+                {
+                  text:'Название',
+                  align:'start',
+                  value:'Name'
+                },
+                { text: 'Действия', value: 'actions', sortable: false },
+              ],
                 loading:true,
                 dialogs:[],
                 buttons:[
@@ -67,8 +110,9 @@
                 });
             },
             deleteOne(id){
-                api.dialogs.delete(this.dialogs[id].id).then(()=>{
-                    this.dialogs.splice(id,1);
+                let arrId = this.dialogs.findIndex((el)=>el.id===id);
+                api.dialogs.delete(id).then(()=>{
+                    this.dialogs.splice(arrId,1);
                 });
             }
         },
