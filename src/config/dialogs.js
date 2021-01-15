@@ -70,7 +70,7 @@ export const DialogAnswerConditionSexValues = ['f', 'm'];
 export const DialogAnswerConditionQuestValues = {
     quest: ['Unknown', 'Active', 'Failed', 'Complete', 'HideFailed'],
     stage: ['Unknown', 'Active', 'Failed', 'Complete'],
-    goal: ['InProgress', 'Ready', 'Complete', 'Failed']
+    goal: ['InProgress', 'Complete', 'Failed']
 };
 export const Resource = ['Gold', 'Crystal'];
 export const DialogAnswerConditionValues = {

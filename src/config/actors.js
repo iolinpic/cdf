@@ -19,7 +19,7 @@ export const DialogGreetingsValues={
     "Conditions":[],
 }
 export const DialogGreetingsConditionTypes=['Quest','Crysm','Item','Resource','Map'];
-export const DialogGreetingsQuestStatuses={quest:['Unknown','Active','Failed','Complete','HideFailed'],stage:['Unknown','Active','Failed','Complete'],goal:['InProgress','Ready','Complete','Failed']};
+export const DialogGreetingsQuestStatuses={quest:['Unknown','Active','Failed','Complete','HideFailed'],stage:['Unknown','Active','Failed','Complete'],goal:['InProgress','Complete','Failed']};
 export const DialogGreetingsConditionOptions={
     "Quest":{
         "QuestId": "5f44ae0a7495bc17024efe46", // id квеста
