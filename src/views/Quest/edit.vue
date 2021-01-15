@@ -51,7 +51,7 @@
         computed: {
             keys() {
                 // return Object.keys(this.quest);
-                return Object.keys(this.quest).filter((key) => this.settings.hasOwnProperty(key));
+                return Object.keys(QFieldSettings);
             },
             settings(){
                 return QFieldSettings;

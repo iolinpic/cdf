@@ -1,5 +1,6 @@
 export const QValues = {
     "DisplayNameText": "",
+    "QTechName":"",
     "DescriptionText": "",
     "Type": "Main",
     // "FirstStageId":"",
@@ -10,6 +11,10 @@ export const QFieldSettings = {
     "DisplayNameText": {
         component: "VTextField",
         label: "Название",
+    },
+    "QTechName": {
+        component: "VTextField",
+        label: "Техническое название",
     },
     "DescriptionText": {
         component: "VTextarea",
