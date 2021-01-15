@@ -44,6 +44,7 @@
 <script>
     import { DialogGreetingsConditionTypes,DialogGreetingsConditionOptions,DialogGreetingsConditionOptionsSettings } from '@/config/actors'
     import actorDialogConditionComponent from "./actorDialogConditionComponent";
+    import deepCopy from "../../util/deepCopy";
 
     //import actorDialogComponent from "./actorDialogComponent";
     //import api from "@/api";
@@ -107,7 +108,8 @@
             addValue() {
                 this.value.push({
                     ConditionType:this.condition,
-                    ConditionOptions:Object.assign({},DialogGreetingsConditionOptions[this.condition])});
+                    ConditionOptions:deepCopy(DialogGreetingsConditionOptions[this.condition]),
+                });
             },
             removeValue(index) {
                 this.value.splice(index, 1);

@@ -36,6 +36,7 @@
 <script>
     import { DialogGreetingsValues} from '@/config/actors'
     import actorDialogComponent from "./actorDialogComponent";
+    import deepCopy from "../../util/deepCopy";
     //import api from "@/api";
 
     export default {
@@ -96,7 +97,7 @@
                 })
             },*/
             addValue() {
-                this.value.push(Object.assign({},DialogGreetingsValues));
+                this.value.push(deepCopy(DialogGreetingsValues));
             },
             removeValue(index) {
                 this.value.splice(index, 1);

@@ -14,6 +14,7 @@
 <script>
     import {QGoalTypes, QGValues} from "@/config/quests";
     import SingleGoalComponent from './single'
+    import deepCopy from "../../../util/deepCopy";
 
     export default {
         name: 'GoalList',
@@ -32,7 +33,7 @@
         methods: {
             addGoal() {
                 // const data = JSON.parse(JSON.stringify(object))
-                const data = Object.assign({}, QGValues);
+                const data = deepCopy(QGValues);
                 this.value.push(data);
             },
             deleteGoal(index){

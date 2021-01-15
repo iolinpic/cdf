@@ -23,6 +23,7 @@
     import {QValues, QFieldSettings} from "@/config/quests";
     import {VTextField, VTextarea, VSelect} from 'vuetify/lib'
     import StageComponent from '@/components/stages/index'
+    import deepCopy from "../../util/deepCopy";
     // import abilityConditionsComponent from "@/components/AbilityConditionsComponent";
     // import crysmTypeComponent from '@/components/CrysmTypeComponent'
     // import optionsComponent from '@/components/OptionComponent'
@@ -44,7 +45,7 @@
         data() {
             return {
                 loading: true,
-                quest: QValues,
+                quest: deepCopy(QValues),
                 valid: true,
             }
         },

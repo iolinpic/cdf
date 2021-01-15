@@ -35,6 +35,7 @@
 <script>
     import { DialogStageValues} from '@/config/dialogs'
     import dialogStageComponent from "./dialogStageComponent";
+    import deepCopy from "../../util/deepCopy";
     //import api from "@/api";
 
     export default {
@@ -65,7 +66,7 @@
                 return lastId;
             },
             addValue() {
-                const data = Object.assign({},DialogStageValues);
+                const data =deepCopy(DialogStageValues);
 
                 data.StageId = this.nextId();
                 //this.lastId ++;

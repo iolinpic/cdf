@@ -21,6 +21,7 @@
     import {DialogValues,DialogFieldSettings} from "@/config/dialogs";
     import {VTextField} from 'vuetify/lib'
     import dialogStagesComponent from "../../components/dialogs/dialogStagesComponent";
+    import deepCopy from "../../util/deepCopy";
     // import abilityConditionsComponent from "@/components/AbilityConditionsComponent";
     // import crysmTypeComponent from '@/components/CrysmTypeComponent'
     // import optionsComponent from '@/components/OptionComponent'
@@ -40,7 +41,7 @@
         },
         data() {
             return {
-                dialog:Object.assign({},DialogValues),
+                dialog:deepCopy(DialogValues),
                 valid: true,
             }
         },

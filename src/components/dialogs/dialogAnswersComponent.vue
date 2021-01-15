@@ -35,6 +35,7 @@
 <script>
     import { DialogAnswerValues} from '@/config/dialogs'
     import dialogAnswerComponent from "./dialogAnswerComponent";
+    import deepCopy from "../../util/deepCopy";
     //import api from "@/api";
 
     export default {
@@ -55,7 +56,7 @@
 
         methods: {
             addValue() {
-                this.value.push(Object.assign({},DialogAnswerValues));
+                this.value.push(deepCopy(DialogAnswerValues));
             },
             removeValue(index) {
                 this.value.splice(index, 1);

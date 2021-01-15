@@ -37,6 +37,7 @@
 <script>
     import { DialogAnswerConditionTypes,DialogAnswerConditionValues,DialogAnswerConditionSettings } from '@/config/dialogs'
     import dialogAnswerConditionComponent from "./dialogAnswerConditionComponent";
+    import deepCopy from "../../util/deepCopy";
 
 
     export default {
@@ -61,7 +62,8 @@
             addValue() {
                 this.value.push({
                     Type:this.condition,
-                    Option:Object.assign({},DialogAnswerConditionValues[this.condition])});
+                    Option:deepCopy(DialogAnswerConditionValues[this.condition]),
+                })
             },
             removeValue(index) {
                 this.value.splice(index, 1);

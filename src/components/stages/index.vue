@@ -35,6 +35,7 @@
     // import api from '@/api'
     import {QSValues} from "@/config/quests";
     import GoalsComponent from "./goal/index"
+    import deepCopy from "../../util/deepCopy";
 
     export default {
         name: 'StageList',
@@ -63,7 +64,7 @@
         },
         methods: {
             addStage() {
-                const data = JSON.parse(JSON.stringify(QSValues));
+                const data = deepCopy(QSValues);
                 // let data = Object.assign({}, QSValues);
                 // const object_number = this.value.length;
 

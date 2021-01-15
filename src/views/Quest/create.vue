@@ -19,6 +19,7 @@
     import api from "@/api"
     import {QValues, QFieldSettings} from "@/config/quests";
     import {VTextField, VTextarea, VSelect} from 'vuetify/lib'
+    import deepCopy from "../../util/deepCopy";
     // import questConditionsComponent from "@/components/AbilityConditionsComponent";
     // import crysmTypeComponent from '@/components/CrysmTypeComponent'
     // import optionsComponent from '@/components/OptionComponent'
@@ -38,14 +39,14 @@
         },
         data() {
             return {
-                quest: QValues,
+                quest: deepCopy(QValues),
                 valid: true,
             }
         },
         computed: {
             keys() {
                 // return Object.keys(this.quest);
-                return Object.keys(this.quest).filter((key) => this.settings.hasOwnProperty(key));
+                return Object.keys(QFieldSettings);
             },
             settings(){
                 return QFieldSettings;
