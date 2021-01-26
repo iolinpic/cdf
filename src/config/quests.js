@@ -6,7 +6,7 @@ export const QValues = {
     // "FirstStageId":"",
     "Stage": [],
 };
-export const QTypes = ['Main', 'Secondary'];
+export const QTypes = ['Main', 'Secondary','Technical'];
 export const QFieldSettings = {
     "DisplayNameText": {
         component: "VTextField",
