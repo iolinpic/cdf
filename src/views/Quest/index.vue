@@ -162,11 +162,17 @@ export default {
       }
     },
     parseFile(json) {
-      const resData = deepCopy(QValues);
+
       //use only first package
       const dataStorage = json.Packages[0].Models;
       //only one quest in export
-      let currentNodeId = dataStorage.findIndex((el) => el.Type === "QuestFlow");
+      dataStorage.forEach((el)=>{
+        if(el.Type ==="QuestFlow"){
+          this.parseQuest(dataStorage,el);
+        }
+      })
+      this.getAll();
+      /*let currentNodeId = dataStorage.findIndex((el) => el.Type === "QuestFlow");
       if(currentNodeId!==-1){
         const questId = dataStorage[currentNodeId].Properties.Id;
         //quest params setup
@@ -182,17 +188,40 @@ export default {
               this.parseStage(dataStorage, currentNodeId, resData, questId);
             }
           })
-        }
-        api.quests.store(resData).then((res) => {
+        }*/
+        /*api.quests.store(resData).then((res) => {
           // eslint-disable-next-line no-console
           // console.log(res.data.id);
-          this.back(res.data.id);
-        })
-      }
+          //this.back(res.data.id);
+        })*/
+      //}
 
 
       // eslint-disable-next-line
       //console.log(resData);
+    },
+    parseQuest(dataStorage,currentNode){
+      const resData = deepCopy(QValues);
+        const questId = currentNode.Properties.Id;
+        //quest params setup
+        resData.DescriptionText = currentNode.Properties.Text;
+        resData.DisplayNameText = currentNode.Properties.DisplayName;
+        resData.QTechName = currentNode.Template.QuestTech.QTechName;
+        resData.Type = QTypes[currentNode.Template.QuestTech.Type];
+        //setup stages
+        if (currentNode.Properties.InputPins[0].Connections.length > 0) {
+          currentNode.Properties.InputPins[0].Connections.forEach((con) => {
+            let currentNodeId = dataStorage.findIndex((el) => el.Properties.Id === con.Target && el.Type === "QuestStage");
+            if (currentNodeId !== -1) {
+              this.parseStage(dataStorage, currentNodeId, resData, questId);
+            }
+          })
+        }
+        api.quests.store(resData).then(() => {
+          // eslint-disable-next-line no-console
+          // console.log(res.data.id);
+          //this.back(res.data.id);
+        })
     },
     parseStage(dataStorage, currentNodeId, resData, questId) {
       const currentNode = dataStorage[currentNodeId]
