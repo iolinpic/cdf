@@ -25,6 +25,7 @@
                     <v-expansion-panel-content>
                         <dialog-stage-component
                                 :value="item"
+                                :variable="variable"
                         ></dialog-stage-component>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
@@ -49,6 +50,7 @@
         },
         props: {
             value: Array,
+          variable:Object,
         },
         computed: {
         },

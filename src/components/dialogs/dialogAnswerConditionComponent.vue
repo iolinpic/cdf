@@ -3,7 +3,7 @@
         <template v-if="keys.length>=1">
             <v-flex sm12 v-for="key in keys" :key="key">
                 <div :is="settings[key].component" :items="settings[key].items?settings[key].items:''"
-                     :label="settings[key].label" v-model="value[key]"></div>
+                     :label="settings[key].label" v-model="value[key]" :variable="value"></div>
             </v-flex>
         </template>
     </v-layout>
@@ -13,6 +13,8 @@
     import OptionComponent from "../OptionComponent";
     import itemSelectComponent from "../itemSelectComponent";
     import QuestSelectComponent from "./QuestSelectComponent";
+    import QuestStageSelectComponent from "./QuestStageSelectComponent";
+    import QuestGoalSelectComponent from "./QuestGoalSelectComponent";
 
     export default {
         name: 'dialogAnswerConditionComponent',
@@ -34,6 +36,8 @@
             VSelect,
             itemSelectComponent,
             QuestSelectComponent,
+          QuestStageSelectComponent,
+          QuestGoalSelectComponent,
         },
         computed: {
             keys() {

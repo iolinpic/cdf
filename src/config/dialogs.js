@@ -9,7 +9,7 @@ export const DialogFieldSettings = {
         label: "Название",
     },
     "StartStageId": {
-        component: "VTextField",
+        component: "StageSelectComponent",
         label: "Id первой реплики",
     },
     "Stages": {
@@ -20,8 +20,11 @@ export const DialogFieldSettings = {
 export const DialogStageValues = {
     "StageId": '',
     "TextLine": '',
-    "DefaultNextStageId": '',
-    "Answers": [],
+    "NextStages": [],
+    "SpeakerId": '',
+    "StageConditions": [],
+    "StageActions": [],
+    //"Answers": [],
 };
 export const DialogStageSettings = {
     "StageId": {
@@ -32,14 +35,27 @@ export const DialogStageSettings = {
         component: "VTextarea",
         label: "Реплика",
     },
-    "DefaultNextStageId": {
-        component: "VTextField",
-        label: "Следующая реплика по умолчанию",
+    "NextStages": {
+        component: "StagesSelectComponent",
+        label: "Следующие реплики",
     },
-    "Answers": {
+    "SpeakerId": {
+        component: "npcSelect",
+        label: "Персонаж произносящий реплику",
+    },
+    "StageConditions": {
+        component: "dialogAnswerConditionsComponent",
+        label: "Условия отображения",
+    },
+    "StageActions": {
+        component: "dialogAnswerActionsComponent",
+        label: "Действия после отображения",
+    },
+
+/*    "Answers": {
         component: "dialogAnswersComponent",
         label: "Ответы",
-    },
+    },*/
 };
 export const DialogAnswerValues = {
     "Answer": '',
@@ -80,7 +96,7 @@ export const DialogAnswerConditionValues = {
     'Quest': {
         "QuestId": "", //Id квеста
         "QuestStatus": "Unknown", //Статус квеста
-        "QuestStageId": -1, //Стадия. -1 не проверяем по стадии.
+        "QuestStage": -1, //Стадия. -1 не проверяем по стадии.
         "StageStatus": "Unknown", //Стастус стадии
         "StageGoalId": -1,  //Цель. -1 не проверяем по цели.
         "GoalStatus": "InProgress" //Статус цели.
@@ -112,8 +128,9 @@ export const DialogAnswerConditionSettings = {
             label: "Статус квеста",
             items: DialogAnswerConditionQuestValues.quest,
         }, //Статус необходимый для квеста.
-        "QuestStageId": {
-            component: "OptionComponent",
+        "QuestStage": {
+            component: "QuestStageSelectComponent",
+            //component: "OptionComponent",
             label: "Требуемая стадия (-1, если не проверять по стадии)",
         }, // Требуемая стадия (-1, если не проверять по стадии)
         "StageStatus": {
@@ -122,7 +139,8 @@ export const DialogAnswerConditionSettings = {
             items: DialogAnswerConditionQuestValues.stage,
         }, //Статус необходимый для стадии.
         "StageGoalId": {
-            component: "OptionComponent",
+            component: "QuestGoalSelectComponent",
+            //component: "OptionComponent",
             label: "Требуемая цель (-1, если не проверять по целям)",
         }, // Требуемая цель (-1, если не проверять по целям)
         "GoalStatus": {
@@ -197,11 +215,12 @@ export const DialogAnswerActionSettings = {
             label: "Квест",
         }, // id квеста
         "QuestStage": {
-            component: "OptionComponent",
+            //component: "OptionComponent",
+            component: "QuestStageSelectComponent",
             label: "Требуемая стадия (-1, если не проверять по стадии)",
         }, // Требуемая стадия (-1, если не проверять по стадии)
         "QuestGoal": {
-            component: "OptionComponent",
+            component: "QuestGoalSelectComponent",
             label: "Требуемая цель (-1, если не проверять по целям)",
         }, // Требуемая цель (-1, если не проверять по целям)
     },
@@ -211,11 +230,13 @@ export const DialogAnswerActionSettings = {
             label: "Квест",
         }, // id квеста
         "QuestStage": {
-            component: "OptionComponent",
+            //component: "OptionComponent",
+            component: "QuestStageSelectComponent",
             label: "Требуемая стадия (-1, если не проверять по стадии)",
         }, // Требуемая стадия (-1, если не проверять по стадии)
         "QuestGoal": {
-            component: "OptionComponent",
+            component: "QuestGoalSelectComponent",
+            //component: "OptionComponent",
             label: "Требуемая цель (-1, если не проверять по целям)",
         }, // Требуемая цель (-1, если не проверять по целям)
     },

@@ -3,6 +3,7 @@ export const ActorValues = {
     "DescriptionText": '',
     "Icon": '',
     'Tech':'Игровой',
+    'ArticyId':'',
     "EquipArtifacts": [],
     "Consumables": [],
     "DialogGreetings":[],
@@ -24,7 +25,7 @@ export const DialogGreetingsConditionOptions={
     "Quest":{
         "QuestId": "5f44ae0a7495bc17024efe46", // id квеста
         "QuestStatus": "Active", //Статус необходимый для квеста.
-        "QuestStageId": 1, // Требуемая стадия (-1, если не проверять по стадии)
+        "QuestStage": -1, // Требуемая стадия (-1, если не проверять по стадии)
         "StageStatus": "Active", //Статус необходимый для стадии.
         "StageGoalId": -1, // Требуемая цель (-1, если не проверять по целям)
         "GoalStatus": "Active" //Статус необходимый для цели.
@@ -58,8 +59,9 @@ export const DialogGreetingsConditionOptionsSettings={
             label: "Статус квеста",
             items: DialogGreetingsQuestStatuses.quest,
         }, //Статус необходимый для квеста.
-        "QuestStageId": {
-            component: "OptionComponent",
+        "QuestStage": {
+            //component: "OptionComponent",
+            component: "QuestStageSelectComponent",
             label: "Требуемая стадия (-1, если не проверять по стадии)",
         }, // Требуемая стадия (-1, если не проверять по стадии)
         "StageStatus": {
@@ -68,7 +70,8 @@ export const DialogGreetingsConditionOptionsSettings={
             items: DialogGreetingsQuestStatuses.stage,
         }, //Статус необходимый для стадии.
         "StageGoalId": {
-            component: "OptionComponent",
+            //component: "OptionComponent",
+            component: "QuestGoalSelectComponent",
             label: "Требуемая цель (-1, если не проверять по целям)",
         }, // Требуемая цель (-1, если не проверять по целям)
         "GoalStatus": {
@@ -160,6 +163,10 @@ export const ActorFieldSettings = {
     "DescriptionText": {
         component: "VTextarea",
         label: "Описание",
+    },
+    "ArticyId": {
+        component: "VTextField",
+        label: "ArticyId",
     },
     "Tech": {
         component: "VSelect",
