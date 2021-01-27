@@ -27,7 +27,10 @@
         //     },
         // },
         mounted() {
-
+          if(this.value !== -1){
+            this.getItems(this.variable.QuestId,this.variable.QuestStage);
+          }
+          this.item = this.value;
             //this.getItems();
         },
         watch: {

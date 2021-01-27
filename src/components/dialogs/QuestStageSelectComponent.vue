@@ -27,7 +27,10 @@
         //     },
         // },
         mounted() {
-
+          if(this.value !== -1){
+            this.getItems(this.variable.QuestId);
+          }
+          this.item = this.value;
             //this.getItems();
         },
         watch: {
@@ -38,7 +41,11 @@
                 // })
             },
           value(val){
+              // if(val !== -1){
+              //   this.getItems(this.variable.QuestId);
+              // }
               this.item = val;
+
           }
         },
         methods: {
