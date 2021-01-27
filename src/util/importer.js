@@ -64,7 +64,7 @@ export default {
             //quest params setup
             resData.Name = currentNode.Properties.DisplayName;
             //setup stages
-            if (currentNode.Properties.InputPins[0].Connections.length > 0) {
+            if (currentNode.Properties.InputPins[0].Connections&&currentNode.Properties.InputPins[0].Connections.length > 0) {
                 resData.StartStageId = currentNode.Properties.InputPins[0].Connections[0].Target;
                 currentNode.Properties.InputPins[0].Connections.forEach((con) => {
                     let currentNodeId = dataStorage.findIndex((el) => el.Properties.Id === con.Target && el.Type === "DialogueFragment");
@@ -131,29 +131,31 @@ export default {
             StageData.SpeakerId = actor.id;
         }
         //add link to next edge if it is not final and exists
-        currentNode.Properties.OutputPins[0].Connections.forEach((con)=>{
-            let nextTarget = con.Target;
-            if (nextTarget !== dialogId) {
-                let nextNode = dataStorage.findIndex((el) => el.Properties.Id === nextTarget);
-                if (nextNode !== -1) {
-                    StageData.NextStages.push(nextTarget);
+        if(currentNode.Properties.OutputPins[0].Connections){
+            currentNode.Properties.OutputPins[0].Connections.forEach((con)=>{
+                let nextTarget = con.Target;
+                if (nextTarget !== dialogId) {
+                    let nextNode = dataStorage.findIndex((el) => el.Properties.Id === nextTarget);
+                    if (nextNode !== -1) {
+                        StageData.NextStages.push(nextTarget);
+                    }
                 }
-            }
-        })
-        //push edge to visited list
-        resData.Stages.push(StageData);
-        //dive dipper in links, validating if edje is not final, exists and not visited
-        currentNode.Properties.OutputPins[0].Connections.forEach((con)=>{
-            let nextTarget = con.Target;
-            let visitedTarget = resData.Stages.findIndex((stage)=>stage.StageId === nextTarget)
-            if (nextTarget !== dialogId && visitedTarget===-1) {
-                let nextNode = dataStorage.findIndex((el) => el.Properties.Id === nextTarget);
-                if (nextNode !== -1) {
-                    this.parseDStage(dataStorage, nextNode, resData, dialogId,actors);
+            })
+            //push edge to visited list
+            resData.Stages.push(StageData);
+            //dive dipper in links, validating if edje is not final, exists and not visited
+            currentNode.Properties.OutputPins[0].Connections.forEach((con)=>{
+                let nextTarget = con.Target;
+                let visitedTarget = resData.Stages.findIndex((stage)=>stage.StageId === nextTarget)
+                if (nextTarget !== dialogId && visitedTarget===-1) {
+                    let nextNode = dataStorage.findIndex((el) => el.Properties.Id === nextTarget);
+                    if (nextNode !== -1) {
+                        this.parseDStage(dataStorage, nextNode, resData, dialogId,actors);
+                    }
                 }
-            }
-        })
-
-
+            })
+        }else{
+            resData.Stages.push(StageData);
+        }
     },
 }
