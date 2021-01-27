@@ -35,25 +35,29 @@
           </v-icon>
         </template>
       </v-data-table>
-<!--        <v-simple-table v-else>
-            <thead>
-            <tr>
-                <th class="text-left">Название</th>
-                <th class="text-left">Действия</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="(item,id) in dialogs" :key="item.id">
-                <td>{{ item.Name }}</td>
-                <td><v-btn icon @click="$router.push({name:'dialogs.edit',params:{id:item.id}})"><v-icon>edit</v-icon></v-btn><v-btn icon><v-icon @click="deleteOne(id)">delete</v-icon></v-btn></td>
-            </tr>
-            </tbody>
-        </v-simple-table>-->
+      <v-dialog
+          v-model="dialog"
+          persistent
+          max-width="600px"
+      >
+        <v-card>
+          <v-card-title>Выберите файл</v-card-title>
+          <v-card-text>
+            <v-file-input v-model="file" accept=".json" label="json articy export"></v-file-input>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn text :disabled="this.file===undefined" @click="importFile">Импорт</v-btn>
+            <v-btn @click="dialog = false" text>Закрыть</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </v-card>
 </template>
 <script>
     import {UI_TOOLBAR_BTNS,UI_TOOLBAR_BTNS_CLEAR} from "@/store/mutation-types";
     import api from '@/api';
+    import Importer from '@/util/importer'
     import fileDownload from 'js-file-download'
     export default {
         name:'DialogsPage',
@@ -62,6 +66,8 @@
         },
         data(){
             return {
+              dialog: false,
+              file: undefined,
               search:'',
               headers:[
                 {
@@ -81,6 +87,13 @@
                             this.$router.push({name:'dialogs.create'});
                         }
                     },
+                  {
+                    text: 'Импортировать',
+                    icon: 'add',
+                    click: () => {
+                      this.dialog = true;
+                    }
+                  },
                     {
                         text:'Сгенерировать',
                         icon:'add',
@@ -103,6 +116,13 @@
             this.$store.commit(UI_TOOLBAR_BTNS_CLEAR);
         },
         methods:{
+          importFile() {
+            Importer.importDialogsFromJson(this.file,()=>{
+              this.file = undefined;
+              this.dialog = false;
+              this.getAll();
+            })
+          },
             getAll(){
                 api.dialogs.all().then((res)=>{
                     this.dialogs = res.data;
