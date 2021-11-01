@@ -53,9 +53,9 @@
                 </v-btn>
             </template>
         </v-app-bar>
-        <v-content>
+        <v-main>
             <router-view></router-view>
-        </v-content>
+        </v-main>
         <v-snackbar
                 v-model=showAlert
                 :timeout="6000"
