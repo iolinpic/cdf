@@ -36,9 +36,10 @@ export const ITypes = [
                 ItemOption: {},
             },
             {
-                name:"Dust",
+                name:"ResourceBag",
                 ItemOption: {
                     "DustPower": 100,
+                    "GoldCount": 0,
                 },
             },
         ]
@@ -92,6 +93,10 @@ export const ITypesSettings = {
     "DustPower": {
         component: "optionsComponent",
         label: "Количество пыли",
+    },
+    "GoldCount": {
+        component: "optionsComponent",
+        label: "Количество золота",
     },
     "StatusEffects": {//статусы тип 11/0
         component: 'conditionsArray',

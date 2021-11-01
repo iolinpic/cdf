@@ -172,7 +172,7 @@ export const DialogAnswerConditionSettings = {
         } // количество
     }
 };
-export const DialogAnswerActionTypes = ['StartQuest', 'CompleteQuestGoal', 'FailQuestGoal', 'Item', 'Resources', 'StartBattle', 'InitScript'];
+export const DialogAnswerActionTypes = ['StartQuest', 'CompleteQuestGoal', 'FailQuestGoal', 'Item', 'Resources', 'StartBattle','InitTradeSys', 'InitScript'];
 export const DialogAnswerActionValues = {
     'StartQuest': {
         "QuestId": "" //id квеста.
@@ -198,6 +198,7 @@ export const DialogAnswerActionValues = {
         "Action": "Add" //Выбор - отдать или забрать.
     },
     'StartBattle': {},
+    'InitTradeSys': {},
     'InitScript': {
         "ScriptId": "" //Название скрипта вводится вручную.
     },
@@ -273,6 +274,7 @@ export const DialogAnswerActionSettings = {
         },
     },
     'StartBattle': {},
+    'InitTradeSys': {},
     'InitScript': {
         "ScriptId": {
             component: "VTextField",
