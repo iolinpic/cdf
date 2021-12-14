@@ -1,8 +1,8 @@
 module.exports = {
     // proxy API requests to Valet during development
     devServer: {
-        proxy: 'http://localhost:3000'
-        //proxy: 'http://crysmo.neksys.ru'
+        //proxy: 'http://localhost:3000'
+        proxy: 'https://crysmo.neksys.ru'
         // proxy:process.env.VUE_APP_PROXY,
         // public:process.env.VUE_APP_PROXY,
         // proxy: 'http://yusdoc.ru'
