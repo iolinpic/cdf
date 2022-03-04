@@ -18,6 +18,9 @@ export const AValues = {
     "DamageTypes": [],
     "ConditionTarget": [],
     "ConditionSelf": [],
+    "ConditionEnemyLine": [],
+    "ConditionAllyLine": [],
+    "ConditionAllLines": [],
     "FX":"",
     "HitFX":"",
 };
@@ -88,6 +91,18 @@ export const AFieldSettings = {
     "ConditionSelf": {
         component: 'abilityConditionsComponent',
         label: "Список статусных эффектов, которые будут наложены на атакующего с некоторым шансом.",
+    },
+    "ConditionEnemyLine": {
+        component: 'abilityConditionsComponent',
+        label: "Статусы на противниках (линия)",
+    },
+    "ConditionAllyLine": {
+        component: 'abilityConditionsComponent',
+        label: "Статусы на союзниках (линия)",
+    },
+    "ConditionAllLines": {
+        component: 'abilityConditionsComponent',
+        label: "Статусы на всех",
     },
     "FX": {
         component: "VTextField",

@@ -1,13 +1,13 @@
 <template>
-    <v-select v-model="item" :items="items" item-value="id" item-text="Name"
-              :loading="loading" @input="updValue" :label="label"></v-select>
+    <v-autocomplete v-model="item" :items="items" item-value="id" item-text="Name"
+              :loading="loading" @input="updValue" :label="label"></v-autocomplete>
 </template>
 <script>
     import api from '@/api'
     // import {CItems} from "@/config/crysms";
 
     export default {
-        name: 'QuestSelectComponent',
+        name: 'DialogSelectComponent',
         data() {
             return {
                 loading: false,

@@ -1,6 +1,6 @@
 <template>
-    <v-select v-model="item" :items="items" item-value="id" item-text="DisplayNameText"
-              :loading="loading" @input="updValue" :label="label"></v-select>
+    <v-autocomplete v-model="item" :items="items" item-value="id" item-text="DisplayNameText"
+              :loading="loading" @input="updValue" :label="label"></v-autocomplete>
 </template>
 <script>
     import api from '@/api'
